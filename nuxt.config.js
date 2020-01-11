@@ -8,8 +8,14 @@ module.exports = {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
+      { name: 'description', content: 'Some description' },
+      { name: 'keywords', content: '' },
+      { property: 'og:image', content: 'http://' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:description', content: 'Some desc' },
+      { property: 'og:url', content: 'http://' },
+      { property: 'og:title', content: 'Some title' }
     ],
     link: [
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
