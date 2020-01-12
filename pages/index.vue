@@ -1,10 +1,15 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="container-2">
+    <div>
       <AppNavigation />
       <nuxt />
     </div>
-    <h1>Все для вашої мрії</h1>
+    <div class="main">
+      <h1>Все для вашої мрії</h1>
+      <div class="btn">
+        <nuxt-link to="/">Увійти</nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +24,33 @@ export default {
 </script>
 <style scoped>
 div {
-  background: black;
+  background: #f1f1f1;
+}
+.main {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-left: 200px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100px;
+  height: 50px;
+  background: grey;
+  border-radius: 10px;
+}
+h1 {
+  font-size: 55px;
+  letter-spacing: 10px;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 25px;
+}
+.container-2 {
+  height: 100vh;
 }
 </style>
