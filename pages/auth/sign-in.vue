@@ -5,10 +5,12 @@
         <div class="account"></div>
         <label>Ведіть ваш логін</label>
         <input type="email" placeholder="email або номер телефону" />
+
         <label>Ведіть свій пароль</label>
         <input type="password" placeholder="Не менше 6 знаків" />
+
         <div class="btn">
-          <nuxt-link to="/">Увійти</nuxt-link>
+          <NLink to="/">Увійти</NLink>
         </div>
       </div>
     </div>

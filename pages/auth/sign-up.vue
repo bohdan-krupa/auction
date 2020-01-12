@@ -2,6 +2,6 @@
   <div class="container">
     <input type="text" />
     <input type="text" />
-    <input type="submit" />
+    <!-- <input type="submit" /> -->
   </div>
 </template>

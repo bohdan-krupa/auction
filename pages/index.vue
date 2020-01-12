@@ -2,7 +2,6 @@
   <section>
     <div class="component">
       <AppNavigation />
-      <nuxt />
     </div>
     <div class="main">
       <h1>Все для вашої мрії</h1>
@@ -22,38 +21,40 @@ export default {
   },
   methods: {
     OpenAccount: function() {
-      this.$router.push("/auth/sign-in");
+      this.$router.replace("/auth/sign-in");
     }
   }
 };
 </script>
-<style scoped>
-.main {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  margin-left: 200px;
-}
-.btn {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  width: 100px;
-  height: 50px;
-  background: grey;
-  border-radius: 10px;
-}
-h1 {
-  font-size: 55px;
-  letter-spacing: 10px;
-}
-a {
-  text-decoration: none;
-  color: #fff;
-  margin-left: 25px;
-}
-section {
-  height: 100vh;
-  background: #f1f1f1;
-}
+
+<style lang="sass" scoped>
+@import ''
+.main
+  display: flex
+  justify-content: flex-start
+  flex-direction: column
+  margin-left: 200px
+
+.btn
+  display: flex
+  align-items: center
+  flex-direction: row
+  width: 100px
+  height: 50px
+  background: grey
+  border-radius: 10px
+
+
+h1
+  font-size: 55px
+  letter-spacing: 10px
+
+a
+  text-decoration: none
+  color: #fff
+  margin-left: 25px
+
+section
+  height: 100vh
+  background: 
 </style>

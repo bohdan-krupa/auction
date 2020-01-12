@@ -2,7 +2,7 @@
   <div class="container">
     <nav>
       <div class="logo">
-        <img src="../../static/img/icons8-рукопожатие-100.png" alt="Logo" />
+        <img src="img/icons8-рукопожатие-100.png" alt="Logo" />
         <span>AucFine</span>
       </div>
 
@@ -24,6 +24,7 @@ nav {
   padding: 50px;
   align-items: center;
 }
+
 .navigation {
   display: flex;
   margin-right: 25px;
@@ -37,14 +38,17 @@ li {
   font-family: "Roboto";
   letter-spacing: 10px;
 }
+
 .logo {
   display: flex;
   font-family: "Roboto";
   font-size: 50px;
 }
+
 img {
   width: 80px;
 }
+
 span {
   margin-left: 20px;
   margin-top: 10px;
