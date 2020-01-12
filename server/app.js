@@ -12,7 +12,7 @@ const app = express()
 mongoose.connect(keys.MONGO_URL)
   .then(() => {
     consola.ready({
-      message: 'MongoDB connected',
+      message: 'MongoDB connected and Danylo sucks my dick',
       badge: true
     })
   })
