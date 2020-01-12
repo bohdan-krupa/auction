@@ -1,16 +1,16 @@
 <template>
-<section>
+  <section>
     <div class="component">
       <AppNavigation />
       <nuxt />
     </div>
     <div class="main">
       <h1>Все для вашої мрії</h1>
-      <div class="btn">
+      <div class="btn" @click="OpenAccount">
         <nuxt-link to="/">Увійти</nuxt-link>
       </div>
     </div>
-</section>
+  </section>
 </template>
 
 <script>
@@ -19,6 +19,11 @@ export default {
   layout: "default",
   components: {
     AppNavigation
+  },
+  methods: {
+    OpenAccount: function() {
+      this.$router.push("/auth/sign-in");
+    }
   }
 };
 </script>
