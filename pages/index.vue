@@ -1,5 +1,5 @@
 <template>
-  <div class="container-2">
+  <div class="container">
     <div>
       <AppNavigation />
       <nuxt />
@@ -50,7 +50,7 @@ a {
   color: #fff;
   margin-left: 25px;
 }
-.container-2 {
+.container {
   height: 100vh;
 }
 </style>
