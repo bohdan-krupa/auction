@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div>
+<section>
+    <div class="component">
       <AppNavigation />
       <nuxt />
     </div>
@@ -10,7 +10,7 @@
         <nuxt-link to="/">Увійти</nuxt-link>
       </div>
     </div>
-  </div>
+</section>
 </template>
 
 <script>
@@ -23,9 +23,6 @@ export default {
 };
 </script>
 <style scoped>
-div {
-  background: #f1f1f1;
-}
 .main {
   display: flex;
   justify-content: flex-start;
@@ -50,7 +47,8 @@ a {
   color: #fff;
   margin-left: 25px;
 }
-.container {
+section {
   height: 100vh;
+  background: #f1f1f1;
 }
 </style>
