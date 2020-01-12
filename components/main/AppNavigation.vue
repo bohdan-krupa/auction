@@ -27,6 +27,7 @@ nav {
 .navigation {
   display: flex;
   margin-right: 25px;
+  flex-flow: wrap;
 }
 
 li {
