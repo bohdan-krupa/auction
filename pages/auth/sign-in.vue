@@ -68,7 +68,6 @@ a
 .btn
   width: 100px
   height: 30px
-  background-color: $main-background
   border-radius: 10px
 
 

@@ -5,11 +5,12 @@
         <img src="img/icons8-рукопожатие-100.png" alt="Logo" />
         <span>AucFine</span>
       </div>
-
-      <div class="navigation">
-        <li>Головна</li>
-        <li>Баланс</li>
-        <li>Увійти</li>
+      <div class="burger-menu">
+        <div class="navigation">
+          <li>Головна</li>
+          <li>Баланс</li>
+          <li>Увійти</li>
+        </div>
       </div>
     </nav>
   </div>
@@ -63,4 +64,16 @@ span
   
   span
     font-size: 30px
+
+
+
+@media screen and (max-width: 415px)
+  .burger-menu
+    width: 50px
+    height: 50px
+    box-sizing: border-box
+    overflow: hidden
+
+
+
 </style>
