@@ -5,23 +5,27 @@ const User = require('../models/user.model')
 const keys = require('../keys')
 
 module.exports.login = async (req, res) => {
-  const candidate = await User.findOne({ username: req.body.username })
+  try {
+    const candidate = await User.findOne({ username: req.body.username })
 
-  if (candidate) {
-    const isPasswordCorrect = bcrypt.compareSync(req.body.password, candidate.password)
+    if (candidate) {
+      const isPasswordCorrect = bcrypt.compareSync(req.body.password, candidate.password)
 
-    if (isPasswordCorrect) {
-      const token = jwt.sign({
-        login: candidate.login,
-        userId: candidate._id
-      }, keys.JWT, { expiresIn: 60 * 60 }) // 1 hour
+      if (isPasswordCorrect) {
+        const token = jwt.sign({
+          login: candidate.login,
+          userId: candidate._id
+        }, keys.JWT, { expiresIn: 60 * 60 }) // 1 hour
 
-      res.json({ token })
+        res.json({ token })
+      } else {
+        res.status(401).json({ message: 'Пароль невірний' })
+      }
     } else {
-      res.status(401).json({ message: 'Пароль невірний' })
+      res.status(404).json({ message: 'Користувач не знайдений' })
     }
-  } else {
-    res.status(404).json({ message: 'Користувач не знайдений' })
+  } catch (err) {
+    res.status(500)
   }
 }
 
