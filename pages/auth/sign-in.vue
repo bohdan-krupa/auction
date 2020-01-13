@@ -4,10 +4,10 @@
       <div class="container">
         <div class="account"></div>
         <label>Ведіть ваш логін</label>
-        <input type="email" placeholder="email або номер телефону" />
+        <input type="email" placeholder=" email або номер телефону" />
 
         <label>Ведіть свій пароль</label>
-        <input type="password" placeholder="Не менше 6 знаків" />
+        <input type="password" placeholder=" Не менше 6 знаків" />
 
         <div class="btn">
           <NLink to="/">Увійти</NLink>
@@ -50,10 +50,16 @@ div
   flex-direction: column
   margin-top: 100px
   border-radius: 10px
+  box-sizing: border-box
 
 input
   margin-bottom: 20px
-
+  outline: none
+  height: 30px
+  width: 250px
+  border-radius: 10px
+  border:  solid grey
+  padding: 8px
 a
   text-decoration: none
   font-size: 20px
