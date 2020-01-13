@@ -17,12 +17,13 @@
   </section>
 </template>
 <script>
-import AppNavigation from "~/components/main/AppNavigation"
+import AppNavigation from "~/components/main/AppNavigation";
 export default {
+  layout: "sign",
   components: {
     AppNavigation
   }
-}
+};
 </script>
 
 <style lang="sass" scoped>
@@ -33,8 +34,8 @@ div
   justify-content: center
 
 .account
-  width: 100px
-  height: 100px
+  width: 50px
+  height: 50px
   border-radius: 100%
   background-color: #fff
   margin-bottom: 20px
@@ -51,14 +52,16 @@ div
   border-radius: 10px
 
 input
-  margin-bottom: 10px
+  margin-bottom: 20px
 
 a
   text-decoration: none
+  font-size: 20px
+  color: #000
 
 .btn
   width: 100px
-  height: 50px
+  height: 30px
   background-color: $main-background
   border-radius: 10px
 

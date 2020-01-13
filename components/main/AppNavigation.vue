@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <nav>
       <div class="logo">
         <img src="img/icons8-рукопожатие-100.png" alt="Logo" />
@@ -15,14 +15,16 @@
   </div>
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap")
 @import '~/assets/variables.sass'
-
+*
+  margin: 0px
+  padding: 0px
 nav
   display: flex
   justify-content: space-between
-  padding: 50px
+  padding: 20px
   align-items: center
 
 .navigation
