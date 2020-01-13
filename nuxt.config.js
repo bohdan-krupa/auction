@@ -61,12 +61,5 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  },
-  // css: {
-  //   loaderOptions: {
-  //       prependData: `
-          
-  //       `
-  //   }
-  // }
+  }
 }
