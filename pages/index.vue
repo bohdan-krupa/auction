@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     OpenAccount: function() {
-      this.$router.replace("/auth/sign-in");
+      this.$router.push("/auth/sign-in");
     }
   }
 };
