@@ -23,6 +23,9 @@ module.exports = {
       { rel: 'manifest', href: '/site.webmanifest' }
     ]
   },
+  router: {
+    base: '/'
+  },
   loading: { color: '#fff' },
   /*
   ** Global CSS
