@@ -58,7 +58,7 @@ input
   height: 30px
   width: 250px
   border-radius: 10px
-  border:  solid grey
+  border:  solid $main-background
   padding: 8px
 a
   text-decoration: none
@@ -70,5 +70,11 @@ a
   height: 30px
   background-color: $main-background
   border-radius: 10px
+
+
+
+
+
+
 
 </style>

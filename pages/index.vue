@@ -44,6 +44,7 @@ export default {
   height: 50px
   background: grey
   border-radius: 10px
+  margin-top: 20px
 
 
 h1
@@ -57,5 +58,8 @@ a
 
 section
   height: 100vh
-  background: 
+
+
+
+
 </style>

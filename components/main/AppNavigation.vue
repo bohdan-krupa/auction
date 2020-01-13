@@ -51,4 +51,16 @@ span
   margin-left: 20px
   margin-top: 10px
 
+
+@media screen and (max-width: 875px)
+  .navigation
+    display: flex
+    flex-flow: column
+
+  img
+    width: 50px
+    height: 50px
+  
+  span
+    font-size: 30px
 </style>
