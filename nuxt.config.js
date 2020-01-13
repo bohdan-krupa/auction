@@ -1,4 +1,3 @@
-
 module.exports = {
   mode: 'universal',
   /*
@@ -62,5 +61,12 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  // css: {
+  //   loaderOptions: {
+  //       prependData: `
+          
+  //       `
+  //   }
+  // }
 }

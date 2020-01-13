@@ -28,7 +28,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import ''
+@import '~/assets/variables.sass'
+
 .main
   display: flex
   justify-content: flex-start
