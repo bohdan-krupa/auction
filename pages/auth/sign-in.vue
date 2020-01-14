@@ -64,12 +64,13 @@ export default {
   a
     text-decoration: none
     font-size: 20px
-    color: #000
+    color: #fff
 
   .btn
     width: 100px
     height: 30px
     border-radius: 10px
+    background-color: black
 
   span
     font-size: 30px
