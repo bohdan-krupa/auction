@@ -5,7 +5,7 @@
     </div>
     <div class="main">
       <h1>Все для вашої мрії</h1>
-      <div class="btn" @click="OpenAccount">
+      <div class="btn" @click="openAccount">
         <nuxt-link to="/">Увійти</nuxt-link>
       </div>
     </div>
@@ -15,12 +15,11 @@
 <script>
 import AppNavigation from "~/components/main/AppNavigation";
 export default {
-  layout: "default",
   components: {
     AppNavigation
   },
   methods: {
-    OpenAccount: function() {
+    openAccount() {
       this.$router.push("/auth/sign-in");
     }
   }
@@ -28,38 +27,34 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '~/assets/variables.sass'
+  @import '~/assets/variables.sass'
 
-.main
-  display: flex
-  justify-content: flex-start
-  flex-direction: column
-  margin-left: 200px
+  .main
+    display: flex
+    justify-content: flex-start
+    flex-direction: column
+    margin-left: 200px
 
-.btn
-  display: flex
-  align-items: center
-  flex-direction: row
-  width: 100px
-  height: 50px
-  background: grey
-  border-radius: 10px
-  margin-top: 20px
-
-
-h1
-  font-size: 55px
-  letter-spacing: 10px
-
-a
-  text-decoration: none
-  color: #fff
-  margin-left: 25px
-
-section
-  height: 100vh
+  .btn
+    display: flex
+    align-items: center
+    flex-direction: row
+    width: 100px
+    height: 50px
+    background: grey
+    border-radius: 10px
+    margin-top: 20px
 
 
+  h1
+    font-size: 55px
+    letter-spacing: 10px
 
+  a
+    text-decoration: none
+    color: #fff
+    margin-left: 25px
 
+  section
+    height: 100vh
 </style>
