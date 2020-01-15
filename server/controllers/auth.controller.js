@@ -22,28 +22,41 @@ module.exports.login = async (req, res) => {
         res.status(401).json({ message: 'Пароль невірний' })
       }
     } else {
-      res.status(404).json({ message: 'Користувач не знайдений' })
+      res.status(404).json({ message: 'Користувача не знайдено' })
     }
   } catch (err) {
     res.status(500)
+    console.log(err)
   }
 }
 
 
 module.exports.create = async (req, res) => {
-  const candidate = await User.findOne({ username: req.body.username })
+  try {
+    const emailAudit = await User.findOne({ email: req.body.email })
+    const usernameAudit = await User.findOne({ username: req.body.username })
+    const isGoodPassword = req.body.password.length > 5
 
-  if (candidate) {
-    res.status(409).json({ message: 'Ім\'я користувача зайняте' })
-  } else {
-    const salt = bcrypt.genSaltSync(10)
-    
-    const user = new User({
-      username: req.body.username,
-      password: bcrypt.hashSync(req.body.password, salt)
-    })
+    if (emailAudit) {
+      res.status(409).json({ message: 'Email зайнятий' })
+    } else if (usernameAudit) {
+      res.status(409).json({ message: 'Ім\'я зайняте' })
+    } else if (!isGoodPassword) {
+      res.status(409).json({ message: 'Пароль заслабкий' })
+    } else {
+      const salt = bcrypt.genSaltSync(10)
+      
+      const user = new User({
+        email: req.body.email,
+        username: req.body.username,
+        password: bcrypt.hashSync(req.body.password, salt)
+      })
 
-    await user.save()
-    res.status(201).json(user)
+      await user.save()
+      res.status(201).json(user)
+    }
+  } catch (err) {
+    res.status(500)
+    console.log(err)
   }
 }
