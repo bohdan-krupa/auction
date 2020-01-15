@@ -3,10 +3,10 @@
     <div>
       <div class="container">
         <span>Sign in</span>
-        <label>Ведіть свій логін</label>
+        <label>Email:</label>
         <input v-model="email" type="email" placeholder="Email або номер телефону" />
 
-        <label>Ведіть свій пароль</label>
+        <label>Пароль:</label>
         <input :model="password" type="password" placeholder="Не менше 6 знаків" />
 
         <div class="btn" @click="onSignIn()">Увійти</div>

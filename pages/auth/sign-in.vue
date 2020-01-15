@@ -2,18 +2,18 @@
   <section>
     <div>
       <div class="container">
-        <span>Sign in</span>
-        <label>Ведіть свій логін</label>
-        <input type="email" placeholder="Email або номер телефону" />
+        <h2>Вхід</h2>
+        <label>Email:</label>
+        <input type="email" placeholder="Email" />
 
-        <label>Ведіть свій пароль</label>
+        <label>Пароль:</label>
         <input type="password" placeholder="Не менше 6 знаків" />
 
         <div class="btn">Увійти</div>
 
-        <div class="router-register">
-          <span>Не зареєстровані?</span>
-          <a @click="router">Створити акаунт</a>
+        <div class="sign-up">
+          <p>Не зареєстровані?</p>
+          <NLink to="/auth/sign-up">Створити акаунт</NLink>
         </div>
       </div>
     </div>
@@ -23,11 +23,9 @@
 <script>
 export default {
   methods: {
-    router() {
-      this.$router.replace("/auth/sign-up");
-    }
+
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>
@@ -37,74 +35,81 @@ export default {
     display: flex
     justify-content: center
 
-
-
   .container
     width: 350px
-    height: 450px
     background-color: $grey-1
+    box-shadow: 0 0 50px #555
+    border: 1px solid #999
     display: flex
     justify-content: center
     align-items: center
     flex-direction: column
-    margin-top: 100px
-    border-radius: 10px
+    margin-top: 80px
+    padding: 40px 0
+    border-radius: 20px
     box-sizing: border-box
 
   input
     margin-bottom: 20px
     outline: none
     height: 30px
-    width: 250px
+    width: 220px
     border-radius: 10px
     border: solid $main-background
     padding: 8px
-  a
-    text-decoration: none
-    font-size: 20px
-    color: #fff
 
   .btn
     width: 150px
-    height: 50px
-    font-size: 30px
+    line-height: 40px
+    font-size: 20px
     border-radius: 30px
     color: black
     border: 1px solid black
     margin-top: 5px
     cursor: pointer
+    transition: 100ms all
 
-  span
-    font-size: 30px
+    &:hover
+      background: #000
+      color: #FFF
+
+  h2
+    font-size: 25px
     margin-bottom: 25px
-  
+    text-transform: uppercase
+    color: #777
+    letter-spacing: 1px
   
   label
     font-size: 20px
     margin: 10px
+    color: #333
 
-
-  .router-register
-    margin-top: 10px
+  .sign-up
+    display: flex
+    flex-flow: column
+    align-items: center
+    margin-top: 50px
     
-    span
-      font-size: 20px 
-      margin-right: 5px 
-
-    a
+    p
+      font-size: 18px
       color: #f1f1f1
-    a:hover
+    a
+      color: #333
+      font-size: 19px
+
+      &:hover
         text-decoration: underline
 
   input:focus
     box-shadow: 0 0 5px rgba(81, 203, 238, 1)
     border: 1px solid rgba(81, 203, 238, 1)
-    -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-    outline: none;
-    border: 1px solid #DDDDDD;
+    -webkit-transition: all 0.30s ease-in-out
+    -moz-transition: all 0.30s ease-in-out
+    -ms-transition: all 0.30s ease-in-out
+    -o-transition: all 0.30s ease-in-out
+    outline: none
+    border: 1px solid #DDDDDD
 
 
 </style>
