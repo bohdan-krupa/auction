@@ -63,15 +63,15 @@ export default {
     line-height: 40px
     font-size: 20px
     border-radius: 30px
-    color: black
-    border: 1px solid black
+    // border: 1px solid black
     margin-top: 5px
+    color: #FFF
     cursor: pointer
     transition: 100ms all
+    background: #555
 
     &:hover
-      background: #000
-      color: #FFF
+      background: #999
 
   h2
     font-size: 25px
