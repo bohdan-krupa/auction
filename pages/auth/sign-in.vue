@@ -22,10 +22,8 @@
 
 <script>
 export default {
-  methods: {
-
-  }
-}
+  methods: {}
+};
 </script>
 
 <style lang="sass" scoped>
@@ -41,12 +39,11 @@ export default {
     box-shadow: 0 0 50px #555
     border: 1px solid #999
     display: flex
-    justify-content: center
     align-items: center
     flex-direction: column
     margin-top: 80px
     padding: 40px 0
-    border-radius: 20px
+    border-radius: 30px
     box-sizing: border-box
 
   input
@@ -77,7 +74,7 @@ export default {
     font-size: 25px
     margin-bottom: 25px
     text-transform: uppercase
-    color: #777
+    color: #444
     letter-spacing: 1px
   
   label
