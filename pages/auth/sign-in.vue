@@ -12,8 +12,8 @@
         <div class="btn">Увійти</div>
 
         <div class="router-register">
-          <span>Not register?</span> <!-- UKR!!! -->
-          <a @click="router">Create an account</a> <!-- UKR!!! -->
+          <span>Не зареєстровані?</span>
+          <a @click="router">Створити акаунт</a>
         </div>
       </div>
     </div>
@@ -65,10 +65,14 @@ export default {
     color: #fff
 
   .btn
-    width: 100px
-    height: 30px
-    border-radius: 10px
-    background-color: black
+    width: 150px
+    height: 50px
+    font-size: 30px
+    border-radius: 30px
+    color: black
+    border: 1px solid black
+    margin-top: 5px
+    cursor: pointer
 
   span
     font-size: 30px
@@ -77,6 +81,7 @@ export default {
   
   label
     font-size: 20px
+    margin: 10px
 
 
   .router-register
@@ -88,6 +93,18 @@ export default {
 
     a
       color: #f1f1f1
+    a:hover
+        text-decoration: underline
+
+  input:focus
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1)
+    border: 1px solid rgba(81, 203, 238, 1)
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    border: 1px solid #DDDDDD;
 
 
 </style>
