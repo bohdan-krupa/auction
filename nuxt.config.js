@@ -27,6 +27,7 @@ module.exports = {
   },
   loading: { color: '#fff' },
   plugins: [
+    '~/plugins/firebase.js'
   ],
   modules: [
     // '@nuxtjs/axios',

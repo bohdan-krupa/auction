@@ -1,8 +1,20 @@
 <template>
   <div>
-    <nuxt />
+    <AppNavigation />
+    <main>
+      <nuxt />
+    </main>
   </div>
 </template>
+
+<script>
+import AppNavigation from "~/components/main/AppNavigation";
+export default {
+  components: {
+    AppNavigation
+  }
+};
+</script>
 
 <style>
   html {
@@ -22,5 +34,10 @@
   *:after {
     box-sizing: border-box;
     margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
   }
 </style>

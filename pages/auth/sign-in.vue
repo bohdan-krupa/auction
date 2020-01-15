@@ -4,17 +4,16 @@
       <div class="container">
         <span>Sign in</span>
         <label>Ведіть свій логін</label>
-        <input type="email" placeholder=" email або номер телефону" />
+        <input type="email" placeholder="Email або номер телефону" />
 
         <label>Ведіть свій пароль</label>
-        <input type="password" placeholder=" Не менше 6 знаків" />
+        <input type="password" placeholder="Не менше 6 знаків" />
 
-        <div class="btn">
-          <NLink to="/">Увійти</NLink>
-        </div>
+        <div class="btn">Увійти</div>
+
         <div class="router-register">
-          <span>Not register ?</span>
-          <a @click="router">Create an account</a>
+          <span>Not register?</span> <!-- UKR!!! -->
+          <a @click="router">Create an account</a> <!-- UKR!!! -->
         </div>
       </div>
     </div>
@@ -23,7 +22,6 @@
 
 <script>
 export default {
-  layout: "sign",
   methods: {
     router() {
       this.$router.replace("/auth/sign-up");
@@ -44,7 +42,7 @@ export default {
   .container
     width: 350px
     height: 450px
-    background-color: grey
+    background-color: $grey-1
     display: flex
     justify-content: center
     align-items: center
@@ -59,7 +57,7 @@ export default {
     height: 30px
     width: 250px
     border-radius: 10px
-    border:  solid $main-background
+    border: solid $main-background
     padding: 8px
   a
     text-decoration: none
@@ -82,11 +80,12 @@ export default {
 
   .router-register
     margin-top: 10px
+    
     span
       font-size: 20px 
       margin-right: 5px 
+
     a
-      text-decoration: underline
       color: #f1f1f1
 
 

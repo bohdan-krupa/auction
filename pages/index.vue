@@ -1,13 +1,8 @@
 <template>
   <section>
-    <div class="component">
-      <AppNavigation />
-    </div>
     <div class="main">
       <h1>Все для вашої мрії</h1>
-      <div class="btn" @click="openAccount">
-        <nuxt-link to="/">Увійти</nuxt-link>
-      </div>
+      <NLink class="btn" to="/auth/sign-in">change to reg</NLink>
     </div>
   </section>
 </template>
@@ -15,12 +10,9 @@
 <script>
 import AppNavigation from "~/components/main/AppNavigation";
 export default {
-  components: {
-    AppNavigation
-  },
   methods: {
     openAccount() {
-      this.$router.push("/auth/sign-in");
+      this.$router.push("");
     }
   }
 };
@@ -51,7 +43,6 @@ export default {
     letter-spacing: 10px
 
   a
-    text-decoration: none
     color: #fff
     margin-left: 25px
 
