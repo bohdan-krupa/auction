@@ -7,7 +7,9 @@
       </div>
       <div class="burger-menu">
         <div class="navigation">
-          <li>Головна</li>
+          <li>
+            <nuxt-link to="/">Головна</nuxt-link>
+          </li>
           <li>Баланс</li>
           <li>Увійти</li>
         </div>
@@ -49,6 +51,10 @@
   span
     margin-left: 20px
     margin-top: 10px
+  
+  a
+    text-decoration: none
+    color: #000
 
 
   @media screen and (max-width: 875px)

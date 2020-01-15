@@ -2,8 +2,8 @@
   <section>
     <div>
       <div class="container">
-        <div class="account"></div>
-        <label>Ведіть ваш логін</label>
+        <span>Sign in</span>
+        <label>Ведіть свій логін</label>
         <input type="email" placeholder=" email або номер телефону" />
 
         <label>Ведіть свій пароль</label>
@@ -12,15 +12,24 @@
         <div class="btn">
           <NLink to="/">Увійти</NLink>
         </div>
+        <div class="router-register">
+          <span>Not register ?</span>
+          <a @click="router">Create an account</a>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  export default {
-    layout: "sign"
-  };
+export default {
+  layout: "sign",
+  methods: {
+    router() {
+      this.$router.replace("/auth/sign-up");
+    }
+  }
+};
 </script>
 
 <style lang="sass" scoped>
@@ -30,12 +39,7 @@
     display: flex
     justify-content: center
 
-  .account
-    width: 50px
-    height: 50px
-    border-radius: 100%
-    background-color: #fff
-    margin-bottom: 20px
+
 
   .container
     width: 350px
@@ -66,4 +70,26 @@
     width: 100px
     height: 30px
     border-radius: 10px
+
+  span
+    font-size: 30px
+    margin-bottom: 25px
+  
+  
+  label
+    font-size: 20px
+
+
+  .router-register
+    margin-top: 10px
+    span
+      font-size: 20px 
+      margin-right: 5px 
+    a
+      text-decoration: underline
+      color: #f1f1f1
+
+
 </style>
+
+
