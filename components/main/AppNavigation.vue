@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <header>
     <nav>
       <div class="logo">
         <img src="img/icons8-рукопожатие-100.png" alt="Logo" />
@@ -15,7 +15,7 @@
         </div>
       </div>
     </nav>
-  </div>
+  </header>
 </template>
 
 <style lang="sass" scoped>

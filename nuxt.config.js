@@ -1,3 +1,5 @@
+// "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+
 module.exports = {
   mode: 'universal',
   head: {
@@ -25,6 +27,7 @@ module.exports = {
   },
   loading: { color: '#fff' },
   plugins: [
+    '~/plugins/firebase.js'
   ],
   modules: [
     // '@nuxtjs/axios',
