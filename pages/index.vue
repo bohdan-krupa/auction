@@ -10,9 +10,7 @@
 import AppNavigation from "~/components/main/AppNavigation";
 export default {
   methods: {
-    openAccount() {
-      this.$router.push("");
-    }
+
   }
 };
 </script>
@@ -24,7 +22,6 @@ export default {
     display: flex
     justify-content: flex-start
     flex-direction: column
-    margin-left: 200px
 
   .btn
     display: flex
@@ -36,10 +33,12 @@ export default {
     border-radius: 10px
     margin-top: 20px
 
-
   h1
+    margin-top: 150px
+    text-align: center
     font-size: 55px
     letter-spacing: 5px
+    color: #333
 
   a
     color: #fff
