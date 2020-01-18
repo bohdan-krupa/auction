@@ -39,7 +39,7 @@ export default {
 
   h1
     font-size: 55px
-    letter-spacing: 10px
+    letter-spacing: 5px
 
   a
     color: #fff

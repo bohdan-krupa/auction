@@ -8,14 +8,13 @@
 </template>
 
 <script>
-import AppNavigation from "~/components/main/AppNavigation"
-import firebase from 'firebase'
+  import AppNavigation from "~/components/main/AppNavigation"
 
-export default {
-  components: {
-    AppNavigation
-  }
-};
+  export default {
+    components: {
+      AppNavigation
+    }
+  };
 </script>
 
 <style>
