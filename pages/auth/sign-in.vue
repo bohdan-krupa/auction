@@ -39,7 +39,11 @@
     },
     methods: {
       toSignIn() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(error => {
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
+          Toastify({
+            text: 'Signed in'
+          }).showToast()
+        }).catch(error => {
           console.log(error)
         })
       }
