@@ -6,22 +6,37 @@
       <input type="text" placeholder=" нік-нейм" />
 
       <label>Ведіть свій mail:</label>
-      <input type="email" placeholder="Ведіть свій Email" />
+      <input v-model="email" type="email" placeholder="Ведіть свій Email" />
 
-      <label>Пароль:</label>
-      <input type="password" placeholder="Придумайте пароль" />
+      <label>Пароль: {{email}}</label>
+      <input v-model="password" type="password" placeholder="Придумайте пароль" />
       <label>Повторіть пароль</label>
-      <input type="password" placeholder="Повторіть пароль" />
+      <input v-model="password2" type="password" placeholder="Повторіть пароль" />
 
-      <div class="btn">Register</div>
+      <div @click="toSignUp" class="btn">Register</div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  layout: "sign"
-};
+  import firebase from 'firebase'
+
+  export default {
+    data() {
+      return {
+        email: null,
+        password: null,
+        password2: null
+      }
+    },
+    methods: {
+      toSignUp() {
+        firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(error => {
+          console.log(error)
+        })
+      }
+    }
+  }
 </script>
 
 <style lang="sass" scoped>

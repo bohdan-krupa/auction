@@ -4,12 +4,12 @@
       <div class="container">
         <h2>Вхід</h2>
         <label>Email:</label>
-        <input type="email" placeholder="Email" />
+        <input v-model="email" type="email" placeholder="Email" />
 
         <label>Пароль:</label>
-        <input type="password" placeholder="Не менше 6 знаків" />
+        <input v-model="password" type="password" placeholder="Не менше 6 знаків" />
 
-        <div class="btn">Увійти</div>
+        <div @click="toSignIn" class="btn">Увійти</div>
 
         <div class="sign-up">
           <p>Не зареєстровані?</p>
@@ -21,9 +21,24 @@
 </template>
 
 <script>
-export default {
-  methods: {}
-};
+  import firebase from 'firebase'
+
+  export default {
+    data() {
+      return {
+        email: null,
+        password: null
+      }
+    },
+    methods: {
+      toSignIn() {
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(error => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+        })
+      }
+    }
+  }
 </script>
 
 <style lang="sass" scoped>
