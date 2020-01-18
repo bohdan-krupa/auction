@@ -3,9 +3,20 @@
 </template>
 
 <script>
-  // let response = await fetch('http://localhost:5001/aucfine/us-central1/api')
+  import firebase from 'firebase'
+  import axios from 'axios'
 
-  // console.log(response.json())
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      user.getIdToken().then(token => {
+        axios.get('http://localhost:5001/aucfine/us-central1/api', {
+          headers: { Authorization: "Bearer " + token }
+        }).then(res => {
+          console.log(res.data)
+        })
+      })
+    }
+  })
 
   export default {
   }
