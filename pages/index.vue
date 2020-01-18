@@ -1,8 +1,7 @@
 <template>
   <section>
     <div class="main">
-      <h1>Все для вашої мрії</h1>
-      <NLink class="btn" to="/auth/sign-in">change to reg</NLink>
+      <h1>Lorem ipsum dolor sit amet</h1>
     </div>
   </section>
 </template>

@@ -30,13 +30,22 @@
         password: null
       }
     },
+    mounted() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          this.$router.replace('/')
+        }
+      })
+    },
     methods: {
       toSignIn() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(error => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
+          console.log(error)
         })
       }
+    },
+    props: {
+      logged: Number
     }
   }
 </script>

@@ -29,6 +29,13 @@
         password2: null
       }
     },
+    mounted() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          this.$router.replace('/')
+        }
+      })
+    },
     methods: {
       toSignUp() {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(error => {

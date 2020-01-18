@@ -2,13 +2,15 @@
   <div>
     <AppNavigation />
     <main>
-      <nuxt />
+      <nuxt/>
     </main>
   </div>
 </template>
 
 <script>
-import AppNavigation from "~/components/main/AppNavigation";
+import AppNavigation from "~/components/main/AppNavigation"
+import firebase from 'firebase'
+
 export default {
   components: {
     AppNavigation
@@ -38,6 +40,7 @@ export default {
 
   a {
     text-decoration: none;
+    color: #000;
     cursor: pointer;
   }
 </style>

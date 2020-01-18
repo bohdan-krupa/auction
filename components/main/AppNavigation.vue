@@ -5,18 +5,34 @@
         <img src="img/icons8-рукопожатие-100.png" alt="Logo" />
         <span>AucFine</span>
       </div>
-      <div class="burger-menu">
-        <div class="navigation">
-          <li>
-            <nuxt-link to="/">Головна</nuxt-link>
-          </li>
-          <li>Баланс</li>
-          <li>Увійти</li>
-        </div>
+
+      <div class="options">
+        <NLink to="/">Аукціони</NLink>
+        <NLink v-if="!isSignIn" to="/auth/sign-in">Увійти</NLink>
+        <NLink v-if="!isSignIn" to="/auth/sign-up">Реєстрація</NLink>
+        <NLink v-if="isSignIn" to="/dashboard">Профіль</NLink>
+        <span v-if="isSignIn">Баланс: 300 грн</span>
       </div>
     </nav>
   </header>
 </template>
+
+<script>
+  import firebase from 'firebase'
+
+  export default {
+    data() {
+      return {
+        isSignIn: false
+      }
+    },
+    mounted() {
+      firebase.auth().onAuthStateChanged(user => {
+        this.isSignIn = user ? true : false
+      })
+    }
+  }
+</script>
 
 <style lang="sass" scoped>
   @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap")
@@ -28,34 +44,29 @@
     padding: 20px
     align-items: center
 
-  .navigation
-    display: flex
-    margin-right: 25px
-    flex-flow: wrap
+    .logo
+      display: flex
+      font-family: "Roboto"
+      font-size: 50px
 
-  li
-    margin-right: 25px
-    list-style: none
-    font-size: 22px
-    font-family: "Roboto"
-    letter-spacing: 10px
+      img
+        width: 80px
 
-  .logo
-    display: flex
-    font-family: "Roboto"
-    font-size: 50px
+      span
+        margin-left: 20px
+        margin-top: 10px
 
-  img
-    width: 80px
+    .options
+      display: flex
+      margin-right: 25px
+      flex-flow: wrap
 
-  span
-    margin-left: 20px
-    margin-top: 10px
-  
-  a
-    text-decoration: none
-    color: #000
-
+      a, span
+        margin-right: 25px
+        list-style: none
+        font-size: 22px
+        font-family: "Roboto"
+        letter-spacing: 2px
 
   @media screen and (max-width: 875px)
     .navigation
