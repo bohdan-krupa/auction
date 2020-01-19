@@ -40,7 +40,8 @@ export default {
   @import '~/assets/variables.sass'
   @import url('https://fonts.googleapis.com/css?family=Gelasio&display=swap')
 
-
+  .top
+    background-image: url(img/background.png)
 
   h1
     margin-top: 150px
@@ -52,7 +53,7 @@ export default {
   .main-item
     text-align: center
     height: 100vh
-    background: #b3c2c9
+    background-color: $hover-button
     margin-top: 500px
 
     h2
@@ -70,7 +71,8 @@ export default {
     .item
       margin-right: 20px
       height: 200px
-      outline: 1px solid #999
+      background: #999
+      border-radius: 30px
 
       img
         width: 180px
