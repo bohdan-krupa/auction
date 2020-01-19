@@ -20,31 +20,35 @@
 </template>
 
 <script>
-  import firebase from 'firebase'
+import firebase from "firebase";
 
-  export default {
-    data() {
-      return {
-        isSignIn: false
-      }
-    },
-    mounted() {
-      firebase.auth().onAuthStateChanged(user => {
-        this.isSignIn = user ? true : false
-      })
-    },
-    methods: {
-      logout() {
-        firebase.auth().signOut().then(() => {
+export default {
+  data() {
+    return {
+      isSignIn: false
+    };
+  },
+  mounted() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.isSignIn = user ? true : false;
+    });
+  },
+  methods: {
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
           Toastify({
-            text: 'Logged out'
-          }).showToast()
-        }).catch(error => {
-          console.log(error)
+            text: "Logged out"
+          }).showToast();
         })
-      }
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
+};
 </script>
 
 <style lang="sass" scoped>

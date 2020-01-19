@@ -42,5 +42,4 @@ a {
   color: #000;
   cursor: pointer;
 }
-
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="cover"></div>
     <section class="top">
       <h1>Lorem ipsum dolor sit amet</h1>
     </section>
@@ -41,20 +42,26 @@ export default {
   @import url('https://fonts.googleapis.com/css?family=Gelasio&display=swap')
 
   .top
-    background-image: url(img/background.png)
+    background-image: url(/img/background.png)
+    width: 100 vw
+    height: 100vh
+    background-position: 100%
+    background-size: cover
+    text-align: center
+    
 
   h1
-    margin-top: 150px
     text-align: center
     font-size: 42px
     letter-spacing: 5px
-    color: #333
+    color: #fff
+    padding-top: 100px
+    text-transform: uppercase
     
   .main-item
     text-align: center
     height: 100vh
     background-color: $hover-button
-    margin-top: 500px
 
     h2
       font-family: 'Alata', sans-serif
