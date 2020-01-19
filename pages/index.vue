@@ -7,22 +7,22 @@
       <h2>Аукціон</h2>
       <div class="container-item">
         <div class="item">
-          <img src="@/static/item/bmw.png" alt="item" />
+          <img src="item/bmw.png" alt="item" />
         </div>
         <div class="item">
-          <img src="@/static/item/bmw.png" alt="item" />
+          <img src="item/bmw.png" alt="item" />
         </div>
         <div class="item">
-          <img src="@/static/item/bmw.png" alt="item" />
+          <img src="item/bmw.png" alt="item" />
         </div>
         <div class="item">
-          <img src="@/static/item/bmw.png" alt="item" />
+          <img src="item/bmw.png" alt="item" />
         </div>
         <div class="item">
-          <img src="@/static/item/bmw.png" alt="item" />
+          <img src="item/bmw.png" alt="item" />
         </div>
         <div class="item">
-          <img src="@/static/item/bmw.png" alt="item" />
+          <img src="item/bmw.png" alt="item" />
         </div>
       </div>
     </section>
