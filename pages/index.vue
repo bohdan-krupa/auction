@@ -14,7 +14,7 @@
           </div>
           <img src="item/bmw.png" alt="item" />
           <div class="btn">
-            <NLink to="/">Участь</NLink>
+            <a @click="auction">Участь</a>
           </div>
         </div>
         <div class="item">
@@ -75,7 +75,11 @@
 <script>
 import AppNavigation from "~/components/main/AppNavigation";
 export default {
-  methods: {}
+  methods: {
+    auction() {
+      this.$router.push("/auction-page");
+    }
+  }
 };
 </script>
 
@@ -104,31 +108,34 @@ export default {
   .main-item
     text-align: center
     height: 100vh
-    background-color: $hover-button
 
     h2
       font-family: 'Alata', sans-serif
       letter-spacing: 5px
       font-size: 40px
       text-transform: uppercase
+      padding-top: 50px
 
     .container-item
       display: flex
       justify-content: center
-      margin-top: 20px
-
+      align-items: center
+      flex-flow: wrap
+      margin-top: 50px
+      
 
     .item
       display: flex
       flex-flow: wrap column
       align-items: center
       margin-right: 30px
+      height: 250px
       width: 180px
       background: #999
       border-radius: 30px
 
       img
-        width: 180px
+        width: 90px
     
     .text-sales
       display: flex

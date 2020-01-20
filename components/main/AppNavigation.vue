@@ -1,10 +1,12 @@
 <template>
   <header>
     <nav>
-      <NLink to="/" class="logo">
-        <img src="img/logo.png" alt="Logo" />
-        <span>AucFine</span>
-      </NLink>
+      <div class="mask">
+        <NLink to="/" class="logo">
+          <img src="img/logo.png" alt="Logo" />
+          <span>AucFine</span>
+        </NLink>
+      </div>
 
       <div class="options">
         <NLink to="/">Аукціони</NLink>
@@ -63,6 +65,8 @@ export default {
     height: 100px
     align-items: center
 
+
+    
     .logo
       display: flex
       font-size: 40px
