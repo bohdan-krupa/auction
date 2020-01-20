@@ -60,11 +60,13 @@ export default {
     font-family: "Roboto"
     justify-content: space-between
     padding: 20px
+    height: 100px
     align-items: center
 
     .logo
       display: flex
       font-size: 40px
+      color: #fff
 
       img
         width: 70px
@@ -81,7 +83,8 @@ export default {
       a, span
         margin-right: 25px
         list-style: none
-        font-size: 20px
+        font-size: 25px
+        color: #fff
         letter-spacing: 2px
 
         &.logout
