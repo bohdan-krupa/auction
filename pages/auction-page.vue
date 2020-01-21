@@ -1,19 +1,22 @@
 <template>
   <div class="main-page">
     <div class="product">
-      <div class="main-img">
-        <img src="img/mac-1.png" alt="main" />
+      <div class="slider-img">
+        <div class="main-img">
+          <img src="img/mac-1.png" alt="main" />
+        </div>
+        <div class="other-img">
+          <img src="img/mac-2.png" alt="photo" />
+          <img src="img/mac-2.png" alt="photo" />
+          <img src="img/mac-1.png" alt="photo" />
+        </div>
       </div>
       <div class="item-data">
         <h3>MacBook Pro</h3>
         <i>#312311</i>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
         <span>Price: 100 грн</span>
-      </div>
-      <div class="other-img">
-        <img src="static/img/mac-2.png" alt="photo" />
-        <img src="static/img/mac-2.png" alt="photo" />
-        <img src="static/img/mac-1.png" alt="photo" />
+        <div class="btn">Підняти ставку</div>
       </div>
     </div>
   </div>
@@ -37,9 +40,11 @@
       height: 350px
       width: 350px
       outline: 1px solid #f1f1f1
+      padding: 20px
     
   .item-data
-    width: 450px
+    display: flex
+    flex-flow: wrap column
     
     h3
       font-size: 35px
@@ -48,6 +53,35 @@
     
     p
       font-size: 15px
+      width: 350px
+    
+    span
+      font-size: 30px
+      font-weight: bold
+      color: #d9ff7d
+      margin-top: 50px
+    
+    .btn
+      display: flex
+      align-items: center
+      padding: 10px
+      width: 150px
+      height: 50px
+      text-align: center
+      margin-top: 20px
+      font-size: 20px
+      font-weight: bold
+      border-radius: 20px
+      background-color: #3ab734
+    
+.other-img
+  img
+    width: 130px
+    height: 130px
+    margin-left: 50px
+    margin-top: 25px
+    outline: 1px solid #fff 
+    padding: 20px 
     
   
   
