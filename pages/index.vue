@@ -13,6 +13,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -32,6 +33,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -51,6 +53,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -70,6 +73,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -89,6 +93,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -108,6 +113,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -127,6 +133,7 @@
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
+            <p class="timer">00:00:10</p>
             <p class="price">20000 грн</p>
           </NLink>
           <div class="btn" @click="makeBid()">Підвищити ставку</div>
@@ -203,7 +210,7 @@ export default {
         flex-flow: column
         align-items: center
         width: 240px
-        height: 300px
+        height: 320px
         margin: 15px
         background: #CCC
         border-radius: 30px
@@ -222,10 +229,13 @@ export default {
         img
           height: 120px
 
-        .buyer
+        .buyer, .timer
           font-size: 17px
           line-height: 25px
           color: #333
+
+        .timer
+          font-weight: bold
 
         .price, .starts-in
           font-size: 20px
@@ -234,7 +244,7 @@ export default {
           letter-spacing: 1px
 
         .starts-in
-          margin-top: 25px
+          margin-top: 48px
 
         .btn
           width: 180px
