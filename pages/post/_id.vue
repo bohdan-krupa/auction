@@ -4,10 +4,28 @@
       <div class="main-img">
         <img src="img/mac-1.png" alt="main" />
       </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:pages/auction/_id.vue
+      <div class="item-data">
+        <h3>MacBook Pro</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
+        <span>
+          Time:
+          <br />12h 13m 42s
+        </span>
+        <span>Price: 100 грн</span>
+        <div class="btn">Підняти ставку</div>
+=======
+>>>>>>> 41c843ebd133bc64eab4858b9a9c391b524ee60b
       <div class="other-img">
         <img src="img/mac-2.png" alt="photo" />
         <img src="img/mac-2.png" alt="photo" />
         <img src="img/mac-1.png" alt="photo" />
+<<<<<<< HEAD
+=======
+>>>>>>> 41c843ebd133bc64eab4858b9a9c391b524ee60b:pages/post/_id.vue
+>>>>>>> 41c843ebd133bc64eab4858b9a9c391b524ee60b
       </div>
     </div>
     <div class="item-data">
@@ -89,7 +107,10 @@ export default {
     margin-top: 25px
     outline: 1px solid #fff 
     padding: 20px 
+<<<<<<< HEAD
     
   
   
+=======
+>>>>>>> 41c843ebd133bc64eab4858b9a9c391b524ee60b
 </style>
