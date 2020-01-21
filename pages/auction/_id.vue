@@ -1,104 +1,127 @@
 <template>
   <div class="product">
-    <div class="slider-img">
-      <div class="main-img">
-        <img src="img/mac-1.png" alt="main" />
+    <div class="info">
+      <h1>MacBook Pro</h1>
+      <div v-if="isStarted" class="current-data">
+        <div class="timer">00:00:10</div>
+        <div class="buyer">mr.Robot</div>
       </div>
-<<<<<<< HEAD:pages/auction/_id.vue
-      <div class="item-data">
-        <h3>MacBook Pro</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
-        <span>
-          Time:
-          <br />12h 13m 42s
-        </span>
-        <span>Price: 100 грн</span>
+      <p class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
+      <div v-if="!isStarted" class="starts-in-container">
+        <p class="starts-in">Початок через:</p>
+        <div class="btn no-btn">7год 14хв 20с</div>
+      </div>
+      <div v-if="isStarted" class="price-container">
+        <p class="price">Ціна: 100 грн</p>
         <div class="btn">Підняти ставку</div>
-=======
+      </div>
+      <div class="btn buy-it-now">Купити зараз за 34000 грн</div>
+    </div>
+
+    <div class="views">
+      <img class="main-img" src="img/mac-1.png" alt="main" />
+      
       <div class="other-img">
         <img src="img/mac-2.png" alt="photo" />
         <img src="img/mac-2.png" alt="photo" />
         <img src="img/mac-1.png" alt="photo" />
->>>>>>> 41c843ebd133bc64eab4858b9a9c391b524ee60b:pages/post/_id.vue
       </div>
-    </div>
-    <div class="item-data">
-      <h3>MacBook Pro</h3>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
-      <span>
-        Time:
-        <br />12h 13m 42s
-      </span>
-      <span>Price: 100 грн</span>
-      <div class="btn">Підняти ставку</div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  validate({ params }) {
-    return !isNaN(params.id);
+  export default {
+    data() {
+      return {
+        isStarted: true
+      }
+    }
   }
-};
 </script>
 
 <style lang="sass" scoped>
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap')
 
-
 .product
   display: flex
-  flex-wrap: wrap
-  padding-top: 180px
-  height: 100vh
+  justify-content: center
+  margin-top: 50px
 
-  .main-img
-    margin: 0px 50px 0px 100px
-    img
-      height: 350px
-      width: 350px
-      outline: 1px solid #f1f1f1
-      padding: 20px
+  .info
+    width: 500px
+    margin-right: 50px
     
-  .item-data
-    display: flex
-    flex-flow: wrap column
-    
-    h3
+    h1
       font-size: 35px
       font-family: 'Source Sans Pro', sans-serif
       letter-spacing: 2px
-    
-    p
-      font-size: 15px
-      width: 350px
-    
-    span
-      font-size: 30px
-      font-weight: bold
-      color: #d9ff7d
-      margin-top: 10px
-    
-    .btn
+
+    .current-data
       display: flex
+      justify-content: space-between
       align-items: center
-      padding: 10px
-      width: 150px
-      height: 50px
-      text-align: center
-      margin-top: 20px
+
+      .timer
+        font-size: 30px
+        color: red
+        letter-spacing: 5px
+
+      .buyer
+        margin-left: 20px
+        font-size: 18px
+    
+    .desc
+      margin-top: 15px
+      font-size: 17px
+      color: #333
+
+    .starts-in-container, .price-container
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 350px
+      margin: 50px 0
+
+    .price, .starts-in
       font-size: 20px
       font-weight: bold
-      border-radius: 20px
-      background-color: #3ab734
+      color: #333
+      letter-spacing: 1px
     
-.other-img
-  img
-    width: 130px
-    height: 130px
-    margin-left: 50px
-    margin-top: 25px
-    outline: 1px solid #fff 
-    padding: 20px 
+    .btn
+      width: 180px
+      text-align: center
+      padding: 10px
+      background: #555
+      color: #FFF
+      border-radius: 10px
+      font-size: 18px
+      letter-spacing: 1px
+      user-select: none
+      cursor: pointer
+
+      &.no-btn
+        user-select: text
+        cursor: text
+
+      &.buy-it-now
+        width: 350px
+
+  .main-img
+    height: 400px
+    width: 400px
+    object-fit: cover
+
+  .other-img
+    display: flex
+    justify-content: center
+
+    img
+      width: 80px
+      height: 80px
+      margin: 15px
+      border: 1px solid #999
+      padding: 8px
+      object-fit: cover 
 </style>

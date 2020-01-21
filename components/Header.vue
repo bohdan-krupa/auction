@@ -64,12 +64,11 @@ export default {
 
   nav
     display: flex
-    align-items: center
-    font-family: 'Roboto'
     justify-content: space-between
-    padding: 20px
+    align-items: center
     height: 100px
-    color: #000 !important
+    font-family: 'Roboto'
+    padding: 20px
     
     .logo
       display: flex
@@ -84,13 +83,12 @@ export default {
 
     .options
       display: flex
-      margin-right: 25px
       flex-flow: wrap
 
       a, span
-        margin-right: 25px
+        margin: 15px
         list-style: none
-        font-size: 22px
+        font-size: 20px
         letter-spacing: 2px
 
         &.logout

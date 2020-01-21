@@ -9,7 +9,7 @@
 
       <div class="auctions">
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -100,7 +100,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -109,7 +109,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -120,7 +120,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="buyer">mr.Robot</p>
@@ -140,7 +140,7 @@
         </div>
 
         <div class="item">
-          <NLink to="/auction-page">
+          <NLink to="/auction/Ldfk3457bhjw">
             <p class="title">BMW 530D</p>
             <img src="item/bmw.png" alt="item" />
             <p class="starts-in">Початок через:</p>
@@ -156,8 +156,6 @@
 export default {
   methods: {
     makeBid() {
-      const id = 0;
-      this.$router.push(`/post/${id}`);
       console.log("some magic");
     }
   }
@@ -213,9 +211,9 @@ export default {
         width: 240px
         height: 320px
         margin: 15px
-        background: #CCC
+        background: #DDD
         border-radius: 30px
-        box-shadow: 0 0 50px #555
+        box-shadow: 0 0 20px #555
         transition: all 200ms
 
         &:hover
