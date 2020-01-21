@@ -26,13 +26,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  validate({ params }) {
+    return !isNaN(params.id);
+  }
+};
+</script>
+
 <style lang="sass" scoped>
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap')
 
 
 .main-page
   height: 100vh
-  background: #999
   margin-top: -100px
 .product
   display: flex

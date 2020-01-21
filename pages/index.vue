@@ -156,7 +156,9 @@
 export default {
   methods: {
     makeBid() {
-      console.log('some magic')
+      const id = 0;
+      this.$router.push(`/post/${id}`);
+      console.log("some magic");
     }
   }
 };
