@@ -1,71 +1,144 @@
 <template>
   <div>
-    <div class="cover"></div>
     <section class="top">
-      <h1>Lorem ipsum dolor sit amet</h1>
+      <h1>Don't fuck yourself</h1>
     </section>
-    <section class="main-item">
-      <h2>Аукціон</h2>
-      <div class="container-item">
+
+    <section class="auctions-container">
+      <h2>Поточні аукціони</h2>
+
+      <div class="auctions">
         <div class="item">
-          <div class="text-sales">
-            <span>Bmw 530d</span>
-            <p>20000$</p>
-          </div>
-          <img src="item/bmw.png" alt="item" />
-          <div class="btn">
-            <a @click="auction">Участь</a>
-          </div>
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
         </div>
+
         <div class="item">
-          <div class="text-sales">
-            <span>Bmw 530d</span>
-            <p>20000$</p>
-          </div>
-          <img src="item/bmw.png" alt="item" />
-          <div class="btn">
-            <NLink to="/">Участь</NLink>
-          </div>
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
         </div>
+
         <div class="item">
-          <div class="text-sales">
-            <span>Bmw 530d</span>
-            <p>20000$</p>
-          </div>
-          <img src="item/bmw.png" alt="item" />
-          <div class="btn">
-            <NLink to="/">Участь</NLink>
-          </div>
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
         </div>
+
         <div class="item">
-          <div class="text-sales">
-            <span>Bmw 530d</span>
-            <p>20000$</p>
-          </div>
-          <img src="item/bmw.png" alt="item" />
-          <div class="btn">
-            <NLink to="/">Участь</NLink>
-          </div>
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
         </div>
+
         <div class="item">
-          <div class="text-sales">
-            <span>Bmw 530d</span>
-            <p>20000$</p>
-          </div>
-          <img src="item/bmw.png" alt="item" />
-          <div class="btn">
-            <NLink to="/">Участь</NLink>
-          </div>
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
         </div>
+
         <div class="item">
-          <div class="text-sales">
-            <span>Bmw 530d</span>
-            <p>20000$</p>
-          </div>
-          <img src="item/bmw.png" alt="item" />
-          <div class="btn">
-            <NLink to="/">Участь</NLink>
-          </div>
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="buyer">mr.Robot</p>
+            <p class="price">20000 грн</p>
+          </NLink>
+          <div class="btn" @click="makeBid()">Підвищити ставку</div>
+        </div>
+
+        <div class="item">
+          <NLink to="/auction-page">
+            <p class="title">BMW 530D</p>
+            <img src="item/bmw.png" alt="item" />
+            <p class="starts-in">Початок через:</p>
+          </NLink>
+          <div class="btn no-btn">7год 14хв 20с</div>
         </div>
       </div>
     </section>
@@ -76,8 +149,8 @@
 import AppNavigation from "~/components/main/AppNavigation";
 export default {
   methods: {
-    auction() {
-      this.$router.push("/auction-page");
+    makeBid() {
+      console.log('some magic')
     }
   }
 };
@@ -88,86 +161,94 @@ export default {
   @import url('https://fonts.googleapis.com/css?family=Gelasio&display=swap')
 
   .top
+    display: flex
+    justify-content: center
+    align-items: center
     background-image: url(/img/background.png)
+    background-position: center
     height: 100vh
-    background-position: 100%
     background-size: cover
     text-align: center
     margin-top: -100px
     
-
-  h1
-    text-align: center
-    font-size: 42px
-    letter-spacing: 5px
-    color: #666
-    text-decoration: underline
-    padding-top: 250px
-    text-transform: uppercase
+    h1
+      text-align: center
+      font-size: 42px
+      letter-spacing: 5px
+      color: #FFF
+      text-transform: uppercase
+      text-shadow: 0 0 15px #000
     
-  .main-item
+  .auctions-container
     text-align: center
     height: 100vh
 
     h2
       font-family: 'Alata', sans-serif
       letter-spacing: 5px
-      font-size: 40px
+      font-size: 30px
       text-transform: uppercase
       padding-top: 50px
+      color: #555
 
-    .container-item
+    .auctions
       display: flex
       justify-content: center
       align-items: center
       flex-flow: wrap
       margin-top: 50px
       
+      .item
+        display: flex
+        flex-flow: column
+        align-items: center
+        width: 240px
+        height: 300px
+        margin: 15px
+        background: #CCC
+        border-radius: 30px
+        box-shadow: 0 0 50px #555
+        transition: all 200ms
 
-    .item
-      display: flex
-      flex-flow: wrap column
-      align-items: center
-      margin-right: 30px
-      height: 250px
-      width: 180px
-      background: #999
-      border-radius: 30px
+        &:hover
+          transform: scale(1.05)
 
-      img
-        width: 90px
-    
-    .text-sales
-      display: flex
-      flex-flow: wrap column
-      align-items: flex-start
-      margin-left: 20px
+        .title
+          margin-top: 10px
+          font-size: 18px
+          font-weight: bold
+          color: #333
 
-      span
-        font-size: 20px
-        font-weight: bold
+        img
+          height: 120px
 
-      p
-        color: #f1f1f1
-        margin-left: 25px
-        font-size: 20px
+        .buyer
+          font-size: 17px
+          line-height: 25px
+          color: #333
 
-    .btn
-      display: flex
-      align-items: center
-      justify-content: center
-      width: 90px
-      height: 40px
-      margin-bottom: 20px
-      border-radius: 10px
-      text-align: center
-      background-color: #888
+        .price, .starts-in
+          font-size: 20px
+          font-weight: bold
+          color: #333
+          letter-spacing: 1px
 
-      a
-        font-size: 20px
-        font-weight: bold
-      
-  
+        .starts-in
+          margin-top: 25px
 
+        .btn
+          width: 180px
+          margin: auto 0 30px 0
+          padding: 10px
+          background: #555
+          color: #FFF
+          border-radius: 10px
+          font-size: 18px
+          letter-spacing: 1px
+          user-select: none
+          cursor: pointer
 
+          &.no-btn
+            user-select: text
+            cursor: text
 </style>
