@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppNavigation />
+    <Header />
     <main>
       <nuxt />
     </main>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import AppNavigation from "~/components/main/AppNavigation";
+import Header from "~/components/Header";
 
 export default {
   components: {
-    AppNavigation
+    Header
   }
 };
 </script>

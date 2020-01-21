@@ -153,7 +153,6 @@
 </template>
 
 <script>
-import AppNavigation from "~/components/main/AppNavigation";
 export default {
   methods: {
     makeBid() {
