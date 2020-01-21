@@ -15,6 +15,10 @@
         <h3>MacBook Pro</h3>
         <i>#312311</i>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
+        <span>
+          Time:
+          <br />12h 13m 42s
+        </span>
         <span>Price: 100 грн</span>
         <div class="btn">Підняти ставку</div>
       </div>
@@ -59,7 +63,7 @@
       font-size: 30px
       font-weight: bold
       color: #d9ff7d
-      margin-top: 50px
+      margin-top: 10px
     
     .btn
       display: flex
