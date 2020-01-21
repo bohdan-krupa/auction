@@ -4,18 +4,18 @@
       <div class="mask">
         <NLink to="/" class="logo">
           <img src="img/logo.png" alt="Logo" />
-          <span>AucFine</span>
+          <h1 :class="{ white: isWhite }">AucFine</h1>
         </NLink>
       </div>
 
       <div class="options">
-        <NLink to="/">Аукціони</NLink>
-        <NLink to="/about">Про нас</NLink>
-        <NLink v-if="!isSignIn" to="/auth/sign-in">Увійти</NLink>
-        <NLink v-if="!isSignIn" to="/auth/sign-up">Реєстрація</NLink>
-        <NLink v-if="isSignIn" to="/dashboard">Профіль</NLink>
-        <span v-if="isSignIn" @click="logout()" class="logout">Вийти</span>
-        <span v-if="isSignIn">Баланс: 300 грн</span>
+        <NLink to="/" :class="{ white: isWhite }">Аукціони</NLink>
+        <NLink to="/about" :class="{ white: isWhite }">Про нас</NLink>
+        <NLink v-if="!isSignIn" to="/auth/sign-in" :class="{ white: isWhite }">Увійти</NLink>
+        <NLink v-if="!isSignIn" to="/auth/sign-up" :class="{ white: isWhite }">Реєстрація</NLink>
+        <NLink v-if="isSignIn" to="/dashboard" :class="{ white: isWhite }">Профіль</NLink>
+        <span v-if="isSignIn" @click="logout()" :class="{ white: isWhite }" class="logout">Вийти</span>
+        <span v-if="isSignIn" :class="{ white: isWhite }">Баланс: 300 грн</span>
       </div>
     </nav>
   </header>
@@ -30,6 +30,11 @@ export default {
       isSignIn: false
     };
   },
+  computed: {
+    isWhite() {
+      return this.$route.name == 'index'
+    }
+  },
   mounted() {
     firebase.auth().onAuthStateChanged(user => {
       this.isSignIn = user ? true : false;
@@ -37,17 +42,13 @@ export default {
   },
   methods: {
     logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          Toastify({
-            text: "Logged out"
-          }).showToast();
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      firebase.auth().signOut().then(() => {
+        Toastify({
+          text: "Logged out"
+        }).showToast();
+      }).catch(error => {
+        console.log(error);
+      })
     }
   }
 };
@@ -57,27 +58,29 @@ export default {
   @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap")
   @import '~/assets/variables.sass'
 
+  .white
+    color: #FFF
+    text-shadow: 0 0 15px #000
+
   nav
     display: flex
-    font-family: "Roboto"
+    align-items: center
+    font-family: 'Roboto'
     justify-content: space-between
     padding: 20px
     height: 100px
-    align-items: center
-
-
+    color: #000 !important
     
     .logo
       display: flex
-      font-size: 40px
-      color: #fff
+      align-items: center
 
       img
         width: 70px
 
-      span
+      h1
+        font-size: 35px
         margin-left: 20px
-        margin-top: 10px
 
     .options
       display: flex
@@ -87,8 +90,7 @@ export default {
       a, span
         margin-right: 25px
         list-style: none
-        font-size: 25px
-        color: #fff
+        font-size: 22px
         letter-spacing: 2px
 
         &.logout
