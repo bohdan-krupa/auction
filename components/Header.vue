@@ -60,7 +60,7 @@ export default {
 
   .white
     color: #FFF
-    text-shadow: 0 0 15px #000
+    text-shadow: 0 0 30px #000
 
   nav
     display: flex

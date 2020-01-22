@@ -40,7 +40,9 @@
             text: 'Created'
           }).showToast()
         }).catch(error => {
-          console.log(error)
+          Toastify({
+            text: error.message
+          }).showToast()
         })
       }
     }

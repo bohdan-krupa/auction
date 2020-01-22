@@ -37,13 +37,17 @@
     },
     methods: {
       toSignIn() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
-          Toastify({
-            text: 'Signed in'
-          }).showToast()
-        }).catch(error => {
-          console.log(error)
-        })
+        if (this.email && this.password) {
+          firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
+            Toastify({
+              text: 'Signed in'
+            }).showToast()
+          }).catch(error => {
+            Toastify({
+              text: error.message
+            }).showToast()
+          })
+        }
       }
     },
     props: {

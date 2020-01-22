@@ -170,7 +170,7 @@ export default {
     display: flex
     justify-content: center
     align-items: center
-    background-image: url(/img/background.png)
+    background-image: url(/img/bg.jpg)
     background-position: center
     height: 100vh
     background-size: cover
@@ -183,7 +183,7 @@ export default {
       letter-spacing: 5px
       color: #FFF
       text-transform: uppercase
-      text-shadow: 0 0 15px #000
+      text-shadow: 0 0 30px #000
     
   .auctions-container
     text-align: center
