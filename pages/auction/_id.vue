@@ -6,7 +6,9 @@
         <div class="timer">00:00:10</div>
         <div class="buyer">mr.Robot</div>
       </div>
-      <p class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
+      <p
+        class="desc"
+      >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
       <div v-if="!isStarted" class="starts-in-container">
         <p class="starts-in">Початок через:</p>
         <div class="btn no-btn">7год 14хв 20с</div>
@@ -19,25 +21,33 @@
     </div>
 
     <div class="views">
-      <img class="main-img" src="img/mac-1.png" alt="main" />
-      
+      <img class="main-img" src="img/mac-1.png" alt="main"  v-for="item in photo" :key="main_photo"/>
+
       <div class="other-img">
-        <img src="img/mac-2.png" alt="photo" />
-        <img src="img/mac-2.png" alt="photo" />
-        <img src="img/mac-1.png" alt="photo" />
+        <img src="img/mac-2.png" alt="photo" @click="changePhoto" />
+        <img src="img/mac-2.png" alt="photo" @click="changePhoto" />
+        <img src="img/mac-1.png" alt="photo" @click="changePhoto"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        isStarted: true
-      }
+export default {
+  data() {
+    return {
+      isStarted: true,
+      photo: ["img/mac-2.png", "img/mac-2.png", "img/mac-1.png"],
+      isActive: true
+    };
+  },
+  methods: {
+    changePhoto() {
+      return this.data.photo
     }
   }
+
+};
 </script>
 
 <style lang="sass" scoped>

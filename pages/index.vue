@@ -153,11 +153,25 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   methods: {
     makeBid() {
       console.log("some magic");
     }
+  },
+  mounted() {
+    const api = "https://us-central1-aucfine.cloudfunctions.net/api/auctions";
+
+    axios
+      .get(api)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
