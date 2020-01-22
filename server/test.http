@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:5001/aucfine/us-central1/api
+
+### Add auction
+POST {{baseUrl}}/admin/auction
+Content-Type: application/json
+
+{
+  "startPrice": 300,
+  "startTime": 300,
+  "title": "Suck my dick",
+  "desc": "Ya ya",
+  "images": ["base64", "base64", "base64"]
+}
+
+### Get auctions
+GET {{baseUrl}}/auctions
+
+### Delete auction
+DELETE {{baseUrl}}/admin/auction?id=Lz3EhnnwLd-HMdzaYAZ
+
+### Update auction
+PUT {{baseUrl}}/admin/auction?id=Lz3I2Hm4wX9UmxB3pvP
+Content-Type: application/json
+
+{
+  "startPrice": 234,
+  "startTime": 3423,
+  "title": "NEW",
+  "desc": "Ffewfegdgdgfrferg",
+  "images": ["base64", "base64", "base64"]
+}
