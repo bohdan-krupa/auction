@@ -21,12 +21,16 @@
     </div>
 
     <div class="views">
-      <img class="main-img" src="img/mac-1.png" alt="main"  v-for="item in photo" :key="main_photo"/>
+      <img class="main-img" :src="mainPhoto" alt="main"/>
 
       <div class="other-img">
-        <img src="img/mac-2.png" alt="photo" @click="changePhoto" />
-        <img src="img/mac-2.png" alt="photo" @click="changePhoto" />
-        <img src="img/mac-1.png" alt="photo" @click="changePhoto"/>
+        <img
+          v-for="(photo, index) in otherPhotos"
+          :key="index"
+          :src="photo"
+          alt="Auction photo"
+          @click="changePhoto(photo)"
+        />
       </div>
     </div>
   </div>
@@ -37,16 +41,15 @@ export default {
   data() {
     return {
       isStarted: true,
-      photo: ["img/mac-2.png", "img/mac-2.png", "img/mac-1.png"],
-      isActive: true
+      mainPhoto: 'img/mac-1.png',
+      otherPhotos: ["img/mac-2.png", "img/mac-1.png"]
     };
   },
   methods: {
-    changePhoto() {
-      return this.data.photo
+    changePhoto(photo) {
+      this.mainPhoto = photo
     }
   }
-
 };
 </script>
 
@@ -134,4 +137,5 @@ export default {
       border: 1px solid #999
       padding: 8px
       object-fit: cover 
+      cursor: pointer
 </style>
