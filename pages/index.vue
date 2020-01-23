@@ -9,7 +9,7 @@
 
       <div class="auctions">
         <div v-for="(auction, index) in auctions" :key="index" class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
+          <NLink :to="`/auction/${index.replace('-', '')}`">
             <p class="title">{{auction.title}}</p>
             <img src="item/bmw.png" alt="item" />
             <p v-if="auction.startTime > 0" class="starts-in">Початок через:</p>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import axios from "axios"
 
 
   export default {
@@ -42,19 +42,19 @@
     },
     methods: {
       makeBid() {
-        console.log("some magic");
+        console.log("some magic")
       }
     },
     mounted() {
       axios
         .get(`${process.env.BASE_API}/auctions`)
         .then(res => {
-          console.log(res.data);
+          console.log(res.data)
           this.auctions = res.data
         })
         .catch(err => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     }, methods: {
         secondsToTime(secs) {
           secs = Math.round(secs)
@@ -74,7 +74,7 @@
           return obj
       }
     }
-  };
+  }
 </script>
 
 <style lang="sass" scoped>
