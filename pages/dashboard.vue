@@ -118,7 +118,6 @@
 
   .profile
     width: 800px
-    height: 600px
     margin: 0 auto
 
     .profile-top
