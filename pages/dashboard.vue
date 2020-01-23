@@ -1,6 +1,6 @@
 <template>
   <section class="profile-container">
-    <h2>Мій профіль</h2>
+    <h1>Мій профіль</h1>
 
     <div class="profile">
       <div class="profile-top">
@@ -13,6 +13,66 @@
         </div>
 
         <img src="img/ava.jpg" alt="Avatar">
+      </div>
+
+      <div class="goods-container">
+        <h3 class="title">Мої товари</h3>
+
+        <div class="goods">
+          <div class="item">
+            <NLink to="/auction/Lkjsdf345Jbss">
+              <p class="title">BMW 530D</p>
+              <img src="item/bmw.png" alt="item" />
+              <p class="price">20000 грн</p>
+            </NLink>
+            <div class="btn">Вказати доставку</div>
+          </div>
+
+          <div class="item">
+            <NLink to="/auction/Lkjsdf345Jbss">
+              <p class="title">BMW 530D</p>
+              <img src="item/bmw.png" alt="item" />
+              <p class="price">20000 грн</p>
+            </NLink>
+            <div class="btn no-btn">Очікуйте</div>
+          </div>
+
+          <div class="item">
+            <NLink to="/auction/Lkjsdf345Jbss">
+              <p class="title">BMW 530D</p>
+              <img src="item/bmw.png" alt="item" />
+              <p class="price">20000 грн</p>
+            </NLink>
+            <div class="btn">Трек номер</div>
+          </div>
+
+          <div class="item">
+            <NLink to="/auction/Lkjsdf345Jbss">
+              <p class="title">BMW 530D</p>
+              <img src="item/bmw.png" alt="item" />
+              <p class="price">20000 грн</p>
+            </NLink>
+            <div class="btn">Вказати доставку</div>
+          </div>
+
+          <div class="item">
+            <NLink to="/auction/Lkjsdf345Jbss">
+              <p class="title">BMW 530D</p>
+              <img src="item/bmw.png" alt="item" />
+              <p class="price">20000 грн</p>
+            </NLink>
+            <div class="btn no-btn">Очікуйте</div>
+          </div>
+
+          <div class="item">
+            <NLink to="/auction/Lkjsdf345Jbss">
+              <p class="title">BMW 530D</p>
+              <img src="item/bmw.png" alt="item" />
+              <p class="price">20000 грн</p>
+            </NLink>
+            <div class="btn">Трек номер</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -42,20 +102,24 @@
 </script>
 
 <style lang="sass" scoped>
-  h2
+  h1, .title
     text-align: center
     font-family: 'Alata', sans-serif
     letter-spacing: 5px
     font-size: 30px
     text-transform: uppercase
-    margin-top: 20px
+    margin-top: 40px
     color: #555
+
+    &.title
+      font-size: 20px
+      letter-spacing: 2px
+      text-transform: none
 
   .profile
     width: 800px
     height: 600px
     margin: 0 auto
-    // background: grey
 
     .profile-top
       display: flex
@@ -72,4 +136,75 @@
         height: 250px
         object-fit: cover
         border-radius: 100%
+
+  .goods-container
+    margin-top: 60px
+
+    .goods
+      display: flex
+      flex-flow: wrap
+      justify-content: space-between
+      margin: 30px -15px
+      
+      .item
+        display: flex
+        flex-flow: column
+        align-items: center
+        width: 240px
+        height: 280px
+        margin: 15px
+        text-align: center
+        background: #DDD
+        border-radius: 30px
+        box-shadow: 0 0 20px #555
+        transition: all 200ms
+
+        &:hover
+          transform: scale(1.05)
+
+        .title
+          margin-top: 10px
+          font-size: 18px
+          font-weight: bold
+          color: #333
+
+        img
+          height: 120px
+
+        .buyer, .timer
+          font-size: 17px
+          line-height: 25px
+          color: #333
+
+        .timer
+          font-weight: bold
+
+        .price, .starts-in
+          font-size: 20px
+          font-weight: bold
+          color: #333
+          letter-spacing: 1px
+
+        .starts-in
+          margin-top: 48px
+
+  .btn
+    width: 180px
+    margin: auto 0 30px 0
+    padding: 10px
+    background: #555
+    color: #FFF
+    text-align: center
+    border-radius: 10px
+    font-size: 18px
+    letter-spacing: 1px
+    user-select: none
+    cursor: pointer
+
+    &.no-btn
+      user-select: text
+      cursor: text
+
+    &.data-item
+      width: 250px
 </style>

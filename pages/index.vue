@@ -156,16 +156,19 @@
 import axios from "axios";
 
 export default {
+  data() {
+    return {
+      auctions: null
+    }
+  },
   methods: {
     makeBid() {
       console.log("some magic");
     }
   },
   mounted() {
-    const api = "https://us-central1-aucfine.cloudfunctions.net/api/auctions";
-
     axios
-      .get(api)
+      .get(`${process.env.BASE_API}/auctions`)
       .then(response => {
         console.log(response.data);
       })
@@ -201,7 +204,6 @@ export default {
     
   .auctions-container
     text-align: center
-    height: 100vh
 
     h2
       font-family: 'Alata', sans-serif
@@ -217,6 +219,7 @@ export default {
       align-items: center
       flex-flow: wrap
       margin-top: 50px
+      padding: 0 50px
       
       .item
         display: flex

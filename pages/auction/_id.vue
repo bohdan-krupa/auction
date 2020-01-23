@@ -42,7 +42,7 @@ export default {
     return {
       isStarted: true,
       mainPhoto: 'img/mac-1.png',
-      otherPhotos: ["img/mac-2.png", "img/mac-1.png"]
+      otherPhotos: ["img/mac-2.png", "img/mac-1.png", "img/mac-3.png"]
     };
   },
   methods: {

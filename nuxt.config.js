@@ -1,6 +1,9 @@
 // "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
 
 module.exports = {
+  env: {
+    BASE_API: 'https://us-central1-aucfine.cloudfunctions.net/api'
+  },
 	mode: 'universal',
 	head: {
 		title: process.env.npm_package_name || '',

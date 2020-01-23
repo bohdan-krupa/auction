@@ -13,45 +13,60 @@
         <NLink to="/about" :class="{ white: isWhite }">Про нас</NLink>
         <NLink v-if="!isSignIn" to="/auth/sign-in" :class="{ white: isWhite }">Увійти</NLink>
         <NLink v-if="!isSignIn" to="/auth/sign-up" :class="{ white: isWhite }">Реєстрація</NLink>
-        <NLink v-if="isSignIn" to="/dashboard" :class="{ white: isWhite }">Профіль</NLink>
+        <NLink v-if="isSignIn && !isAdmin" to="/dashboard" :class="{ white: isWhite }">Профіль</NLink>
+        <NLink v-if="isAdmin" to="/admin" :class="{ white: isWhite }">Адмінка</NLink>
         <span v-if="isSignIn" @click="logout()" :class="{ white: isWhite }" class="logout">Вийти</span>
-        <span v-if="isSignIn" :class="{ white: isWhite }">Баланс: 300 грн</span>
+        <span v-if="isSignIn && !isAdmin" :class="{ white: isWhite }">Баланс: 300 грн</span>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
-import firebase from "firebase";
+  import firebase from "firebase"
+  import axios from 'axios'
 
-export default {
-  data() {
-    return {
-      isSignIn: false
-    };
-  },
-  computed: {
-    isWhite() {
-      return this.$route.name == 'index'
+  export default {
+    data() {
+      return {
+        isSignIn: false,
+        isAdmin: false
+      };
+    },
+    computed: {
+      isWhite() {
+        return this.$route.name == 'index'
+      }
+    },
+    mounted() {
+      firebase.auth().onAuthStateChanged(async user => {
+        this.isSignIn = user ? true : false
+
+        if (user) {
+          const token = await user.getIdToken()
+            
+          axios.get(`${process.env.BASE_API}/admin/isAdmin`, {
+            headers: { Authorization: "Bearer " + token }
+          }).then(res => {
+            this.isAdmin = res.data
+          })
+        } else {
+          this.isAdmin = false
+        }
+      });
+    },
+    methods: {
+      logout() {
+        firebase.auth().signOut().then(() => {
+          Toastify({
+            text: "Logged out"
+          }).showToast();
+        }).catch(error => {
+          console.log(error);
+        })
+      }
     }
-  },
-  mounted() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.isSignIn = user ? true : false;
-    });
-  },
-  methods: {
-    logout() {
-      firebase.auth().signOut().then(() => {
-        Toastify({
-          text: "Logged out"
-        }).showToast();
-      }).catch(error => {
-        console.log(error);
-      })
-    }
-  }
-};
+  };
 </script>
 
 <style lang="sass" scoped>
