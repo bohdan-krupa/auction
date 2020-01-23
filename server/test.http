@@ -15,6 +15,9 @@ Content-Type: application/json
 ### Get auctions
 GET {{baseUrl}}/auctions
 
+### 
+GET {{baseUrl}}/auction?id=Lz3bdtwmcJc66lvdDzj
+
 ### Delete auction
 DELETE {{baseUrl}}/admin/auction?id=Lz3EhnnwLd-HMdzaYAZ
 

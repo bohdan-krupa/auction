@@ -34,6 +34,23 @@ app.get('/auctions', (req, res) => {
   }
 })
 
+// Get auction by id
+app.get('/auction', (req, res) => {
+  try {
+    const id = req.query.id
+    admin.database().ref(`/auctions/-${id}`).once('value', snap => {
+      const auction = snap.val()
+      if (auction) {
+        res.send(snap.val())
+      } else {
+        res.status(404).send('Аукціон не знайдено')
+      }
+    })
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
+
 // Add auction
 app.post('/admin/auction', async (req, res) => {
   try {

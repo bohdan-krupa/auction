@@ -8,144 +8,22 @@
       <h2>Поточні аукціони</h2>
 
       <div class="auctions">
-        <div class="item">
+        <div v-for="(auction, index) in auctions" :key="index" class="item">
           <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
+            <p class="title">{{auction.title}}</p>
             <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
+            <p v-if="auction.startTime > 0" class="starts-in">Початок через:</p>
+            <div v-else>
+              <p class="buyer">mr.Robot</p>
+              <p class="timer">00:00:10</p>
+              <p class="price">20000 грн</p>
+            </div>
           </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
 
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
-          </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
-          </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
-          </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
-          </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
-          </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="buyer">mr.Robot</p>
-            <p class="timer">00:00:10</p>
-            <p class="price">20000 грн</p>
-          </NLink>
-          <div class="btn" @click="makeBid()">Підвищити ставку</div>
-        </div>
-
-        <div class="item">
-          <NLink to="/auction/Ldfk3457bhjw">
-            <p class="title">BMW 530D</p>
-            <img src="item/bmw.png" alt="item" />
-            <p class="starts-in">Початок через:</p>
-          </NLink>
-          <div class="btn no-btn">7год 14хв 20с</div>
+          <div v-if="auction.startTime > 0" class="btn no-btn">
+            {{secondsToTime(auction.startTime).h}}год {{secondsToTime(auction.startTime).m}}хв {{secondsToTime(auction.startTime).s}}с
+          </div>
+          <div v-else class="btn" @click="makeBid()">Підвищити ставку</div>
         </div>
       </div>
     </section>
@@ -153,30 +31,50 @@
 </template>
 
 <script>
-import axios from "axios";
+  import axios from "axios";
 
-export default {
-  data() {
-    return {
-      auctions: null
+
+  export default {
+    data() {
+      return {
+        auctions: null
+      }
+    },
+    methods: {
+      makeBid() {
+        console.log("some magic");
+      }
+    },
+    mounted() {
+      axios
+        .get(`${process.env.BASE_API}/auctions`)
+        .then(res => {
+          console.log(res.data);
+          this.auctions = res.data
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, methods: {
+        secondsToTime(secs) {
+          secs = Math.round(secs)
+          const hours = Math.floor(secs / (60 * 60))
+
+          const divisorForMinutes = secs % (60 * 60)
+          const minutes = Math.floor(divisorForMinutes / 60)
+
+          const divisorForSeconds = divisorForMinutes % 60
+          const seconds = Math.ceil(divisorForSeconds)
+
+          const obj = {
+            'h': hours,
+            'm': minutes,
+            's': seconds
+          }
+          return obj
+      }
     }
-  },
-  methods: {
-    makeBid() {
-      console.log("some magic");
-    }
-  },
-  mounted() {
-    axios
-      .get(`${process.env.BASE_API}/auctions`)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-};
+  };
 </script>
 
 <style lang="sass" scoped>
