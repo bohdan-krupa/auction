@@ -1,14 +1,14 @@
 <template>
   <div class="product">
     <div class="info">
-      <h1>MacBook Pro</h1>
+      <h1>{{auction.title}}</h1>
       <div v-if="isStarted" class="current-data">
         <div class="timer">00:00:10</div>
         <div class="buyer">mr.Robot</div>
       </div>
       <p
         class="desc"
-      >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur recusandae aperiam magnam reprehenderit, aut nam amet ipsa voluptatem eius quam non molestias consequatur, hic velit, officia perferendis! Ea, consequuntur laudantium?</p>
+      >{{auction.desc}}</p>
       <div v-if="!isStarted" class="starts-in-container">
         <p class="starts-in">Початок через:</p>
         <div class="btn no-btn">7год 14хв 20с</div>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="views">
-      <img class="main-img" :src="mainPhoto" alt="main"/>
+      <img class="main-img" :src="mainPhoto" alt="main" />
 
       <div class="other-img">
         <img
@@ -37,18 +37,32 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
       isStarted: true,
-      mainPhoto: 'img/mac-1.png',
-      otherPhotos: ["img/mac-2.png", "img/mac-1.png", "img/mac-3.png"]
+      mainPhoto: "img/mac-1.png",
+      otherPhotos: ["img/mac-2.png", "img/mac-1.png", "img/mac-3.png"],
+      auction: {}
     };
   },
   methods: {
     changePhoto(photo) {
-      this.mainPhoto = photo
-    }
+      this.mainPhoto = photo;
+    },
+  },
+  mounted() {
+    axios.get(`${process.env.BASE_API}/auction?id=${this.$route.params.id}`)
+    .then(res => {
+      console.log(res)
+      this.auction = res.data
+      this.isStarted = res.data.startTime <= 0
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
   }
 };
 </script>
