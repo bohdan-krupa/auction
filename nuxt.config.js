@@ -29,7 +29,8 @@ module.exports = {
 		script: [ { src: '/src/toastify.js' } ]
 	},
 	router: {
-		base: '/'
+    base: '/'
+		// base: '/aucfine-alpha/'
 	},
 	loading: { color: '#fff' },
 	plugins: [ '~/plugins/firebase.js' ],

@@ -16,7 +16,7 @@
       </div>
 
       <div class="goods-container">
-        <h3 class="title">Мої товари</h3>
+        <h3 @click="speed()" class="title">Мої товари</h3>
 
         <div class="goods">
           <div class="item">
@@ -81,11 +81,20 @@
 <script>
   import firebase from 'firebase'
   import moment from 'moment'
+  import axios from 'axios'
 
   export default {
     data() {
       return {
         createDate: null
+      }
+    },
+    methods: {
+      speed() {
+        console.log('ass')
+        axios.get(`${process.env.BASE_API}/change`).then(res => {
+          console.log(res.data)
+        })
       }
     },
     mounted() {
@@ -96,6 +105,10 @@
         } else {
           this.$router.replace('/auth/sign-in')
         }
+      })
+
+      firebase.database().ref('/auctions').on('value', snap => {
+        console.log("YEAH")
       })
     }
   }

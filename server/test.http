@@ -1,5 +1,9 @@
 @baseUrl = http://localhost:5001/aucfine/us-central1/api
 
+
+###
+GET {{baseUrl}}/change
+
 ### Add auction
 POST {{baseUrl}}/admin/auction
 Content-Type: application/json

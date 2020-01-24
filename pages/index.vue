@@ -31,7 +31,8 @@
 </template>
 
 <script>
-  import axios from "axios"
+  import firebase from 'firebase'
+  import axios from 'axios'
 
   export default {
     data() {
@@ -45,15 +46,19 @@
       }
     },
     mounted() {
-      axios
-        .get(`${process.env.BASE_API}/auctions`)
-        .then(res => {
-          console.log(res.data)
-          this.auctions = res.data
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      // axios
+      //   .get(`${process.env.BASE_API}/auctions`)
+      //   .then(res => {
+      //     console.log(res.data)
+      //     this.auctions = res.data
+      //   })
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
+
+      firebase.database().ref('/auctions').on('value', snap => {
+        this.auctions = snap.val()
+      })
     }, methods: {
         secondsToTime(secs) {
           secs = Math.round(secs)

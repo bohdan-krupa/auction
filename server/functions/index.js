@@ -6,6 +6,10 @@ const admin = require('firebase-admin')
 const app = express()
 app.use(cors({ origin: true }))
 
+// setInterval(() => {
+//   console.log('hello')
+// }, 1000)
+
 const serviceAccount = require('./serviceAccountKey.json')
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -22,6 +26,17 @@ admin.initializeApp({
 //     res.status(401).send(err)
 //   }
 // })
+
+let start = 0
+
+setInterval(() => {
+  admin.database().ref(`/auctions/-Lz3bdtwmcJc66lvdDzj/startTime`).set(++start)
+}, 1000)
+
+app.get('/change', async (req, res) => {
+  await admin.database().ref(`/auctions/-Lz3bdtwmcJc66lvdDzj/desc`).set(Date.now())
+  res.send('changed')
+})
 
 // Get all auctions
 app.get('/auctions', (req, res) => {
