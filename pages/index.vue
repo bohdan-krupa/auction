@@ -50,10 +50,13 @@
         this.auctions = snap.val()
       })
     }, methods: {
-      makeBid(auctionId) {
-        console.log(auctionId)
-        axios.post('http://localhost:5001/aucfine/us-central1/api/make-bid', auctionId).then(res => {
-          console.log(res.data)
+      makeBid: async (auctionId) => {
+        const token = await firebase.auth().currentUser.getIdToken(true)
+
+        axios.get(`${process.env.BASE_API}/make-bid?id=${auctionId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
       },
       secondsToTime(secs) {
@@ -67,9 +70,9 @@
         const seconds = Math.ceil(divisorForSeconds)
 
         const obj = {
-          'h': hours,
-          'm': minutes,
-          's': seconds
+          h: hours,
+          m: minutes,
+          s: seconds
         }
         return obj
       }

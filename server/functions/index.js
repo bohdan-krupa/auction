@@ -6,9 +6,10 @@ const admin = require('firebase-admin')
 const app = express()
 app.use(cors({ origin: true }))
 
-// setInterval(() => {
-//   console.log('hello')
-// }, 1000)
+const runtimeOpts = {
+  timeoutSeconds: 300,
+  memory: '2GB'
+}
 
 const serviceAccount = require('./serviceAccountKey.json')
 admin.initializeApp({
@@ -16,27 +17,30 @@ admin.initializeApp({
   databaseURL: 'https://aucfine.firebaseio.com'
 })
 
-app.post('/make-bid', async (req, res) => {
+app.get('/make-bid', async (req, res) => {
   try {
     const tokenId = req.get('Authorization').split('Bearer ')[1]
-    const auctionId = req.body
+    const auctionId = req.query.id
 
     const decodedToken = await admin.auth().verifyIdToken(tokenId)
 
-    admin.database().ref(`/auctions/${auctionId}/currentSecond`).set(10)
-    res.send(decodedToken)
+    await admin.database().ref(`/auctions/${auctionId}`).update({
+      currentSecond: 10,
+      buyer: decodedToken.email
+    })
+
+    res.send(true)
   } catch (err) {
-    res.status(401).send(err)
+    res.status(500).send(err)
   }
 })
 
-let start = 0
-let auctions
+// let start = 0
 
 setInterval(async () => {
-  admin.database().ref(`/test`).set(++start)
+  // admin.database().ref(`/test`).set(++start)
 
-  auctions = (await admin.database().ref(`/auctions`).once('value')).val()
+  const auctions = (await admin.database().ref(`/auctions`).once('value')).val()
 
   for (auction in auctions) {
     if (auctions[auction].startTime > 0) {
@@ -47,18 +51,12 @@ setInterval(async () => {
 
       admin.database().ref(`/auctions/${auction}`).update({
         startTime: 0,
-        buyer: 'mr.Robot',
         currentSecond
       })
     }
   }
 }, 1000)
 
-
-// app.get('/change', async (req, res) => {
-//   await admin.database().ref(`/auctions/-Lz3bdtwmcJc66lvdDzj/desc`).set(Date.now())
-//   res.send('changed')
-// })
 
 // Get all auctions
 app.get('/auctions', (req, res) => {
@@ -154,4 +152,4 @@ app.get('/admin/isAdmin', async (req, res) => {
   }
 })
 
-exports.api = functions.https.onRequest(app)
+exports.api = functions.runWith(runtimeOpts).https.onRequest(app)
