@@ -5,7 +5,7 @@
     </section>
 
     <section class="auctions-container">
-      <h2>Поточні аукціони</h2>
+      <h2>Поточні аукціони <br> {{secondsToTime(test)}}</h2>
 
       <div class="auctions">
         <div v-for="(auction, index) in auctions" :key="index" class="item">
@@ -14,16 +14,16 @@
             <img src="item/bmw.png" alt="item" />
             <p v-if="auction.startTime > 0" class="starts-in">Початок через:</p>
             <div v-else>
-              <p class="buyer">mr.Robot</p>
-              <p class="timer">00:00:10</p>
-              <p class="price">20000 грн</p>
+              <p class="buyer">{{auction.buyer}}</p>
+              <p class="timer">00:00:{{auction.currentSecond}}</p>
+              <p class="price">{{auction.currentPrice}} грн</p>
             </div>
           </NLink>
 
           <div v-if="auction.startTime > 0" class="btn no-btn">
             {{secondsToTime(auction.startTime).h}}год {{secondsToTime(auction.startTime).m}}хв {{secondsToTime(auction.startTime).s}}с
           </div>
-          <div v-else class="btn" @click="makeBid()">Підвищити ставку</div>
+          <div v-else class="btn" @click="makeBid(index)">Підвищити ставку</div>
         </div>
       </div>
     </section>
@@ -37,45 +37,41 @@
   export default {
     data() {
       return {
-        auctions: null
-      }
-    },
-    methods: {
-      makeBid() {
-        console.log("some magic")
+        auctions: null,
+        test: null
       }
     },
     mounted() {
-      // axios
-      //   .get(`${process.env.BASE_API}/auctions`)
-      //   .then(res => {
-      //     console.log(res.data)
-      //     this.auctions = res.data
-      //   })
-      //   .catch(err => {
-      //     console.log(err)
-      //   })
+      firebase.database().ref('/test').on('value', snap => {
+        this.test = snap.val()
+      })
 
       firebase.database().ref('/auctions').on('value', snap => {
         this.auctions = snap.val()
       })
     }, methods: {
-        secondsToTime(secs) {
-          secs = Math.round(secs)
-          const hours = Math.floor(secs / (60 * 60))
+      makeBid(auctionId) {
+        console.log(auctionId)
+        axios.post('http://localhost:5001/aucfine/us-central1/api/make-bid', auctionId).then(res => {
+          console.log(res.data)
+        })
+      },
+      secondsToTime(secs) {
+        secs = Math.round(secs)
+        const hours = Math.floor(secs / (60 * 60))
 
-          const divisorForMinutes = secs % (60 * 60)
-          const minutes = Math.floor(divisorForMinutes / 60)
+        const divisorForMinutes = secs % (60 * 60)
+        const minutes = Math.floor(divisorForMinutes / 60)
 
-          const divisorForSeconds = divisorForMinutes % 60
-          const seconds = Math.ceil(divisorForSeconds)
+        const divisorForSeconds = divisorForMinutes % 60
+        const seconds = Math.ceil(divisorForSeconds)
 
-          const obj = {
-            'h': hours,
-            'm': minutes,
-            's': seconds
-          }
-          return obj
+        const obj = {
+          'h': hours,
+          'm': minutes,
+          's': seconds
+        }
+        return obj
       }
     }
   }

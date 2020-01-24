@@ -9,10 +9,11 @@ POST {{baseUrl}}/admin/auction
 Content-Type: application/json
 
 {
-  "startPrice": 300,
-  "startTime": 300,
-  "title": "Suck my dick",
-  "desc": "Ya ya",
+  "currentPrice": 300,
+  "price": 200000,
+  "startTime": 50000,
+  "title": "Teest",
+  "desc": "Yo yo yo yo",
   "images": ["base64", "base64", "base64"]
 }
 

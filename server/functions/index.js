@@ -16,27 +16,49 @@ admin.initializeApp({
   databaseURL: 'https://aucfine.firebaseio.com'
 })
 
-// app.get('/make-bid', async (req, res) => {
-//   const tokenId = req.get('Authorization').split('Bearer ')[1]
+app.post('/make-bid', async (req, res) => {
+  try {
+    const tokenId = req.get('Authorization').split('Bearer ')[1]
+    const auctionId = req.body
 
-//   try {
-//     const decodedToken = await admin.auth().verifyIdToken(tokenId)
-//     res.send(decodedToken)
-//   } catch (err) {
-//     res.status(401).send(err)
-//   }
-// })
+    const decodedToken = await admin.auth().verifyIdToken(tokenId)
+
+    admin.database().ref(`/auctions/${auctionId}/currentSecond`).set(10)
+    res.send(decodedToken)
+  } catch (err) {
+    res.status(401).send(err)
+  }
+})
 
 let start = 0
+let auctions
 
-setInterval(() => {
-  admin.database().ref(`/auctions/-Lz3bdtwmcJc66lvdDzj/startTime`).set(++start)
+setInterval(async () => {
+  admin.database().ref(`/test`).set(++start)
+
+  auctions = (await admin.database().ref(`/auctions`).once('value')).val()
+
+  for (auction in auctions) {
+    if (auctions[auction].startTime > 0) {
+      admin.database().ref(`/auctions/${auction}/startTime`).set(auctions[auction].startTime - 1)
+    } else {
+      let currentSecond = auctions[auction].currentSecond - 1
+      currentSecond = currentSecond > 0 ? currentSecond : 0
+
+      admin.database().ref(`/auctions/${auction}`).update({
+        startTime: 0,
+        buyer: 'mr.Robot',
+        currentSecond
+      })
+    }
+  }
 }, 1000)
 
-app.get('/change', async (req, res) => {
-  await admin.database().ref(`/auctions/-Lz3bdtwmcJc66lvdDzj/desc`).set(Date.now())
-  res.send('changed')
-})
+
+// app.get('/change', async (req, res) => {
+//   await admin.database().ref(`/auctions/-Lz3bdtwmcJc66lvdDzj/desc`).set(Date.now())
+//   res.send('changed')
+// })
 
 // Get all auctions
 app.get('/auctions', (req, res) => {
@@ -69,12 +91,13 @@ app.get('/auction', (req, res) => {
 // Add auction
 app.post('/admin/auction', async (req, res) => {
   try {
-    const { title, desc, startPrice, startTime, images } = req.body
+    const { title, desc, currentPrice, price, startTime, images } = req.body
 
     await admin.database().ref('/auctions').push({
       title,
       desc,
-      startPrice,
+      currentPrice,
+      price,
       startTime,
       images
     })
