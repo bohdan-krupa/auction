@@ -60,7 +60,7 @@ export default {
       this.isStarted = res.data.startTime <= 0
     })
     .catch(err => {
-      console.log(err)
+      console.error(err)
     })
 
   }
