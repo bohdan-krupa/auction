@@ -58,8 +58,8 @@
       })
     },
     methods: {
-      changeState() { 
-        
+      changeShow() { 
+        // Auctiony i korystuvachi ne mayut buty v grey container
       }
     }
   }
