@@ -9,7 +9,6 @@
       </div>
 
       <div class="options">
-        <NLink to="/" :class="{ white: isWhite }">Аукціони</NLink>
         <NLink to="/about" :class="{ white: isWhite }">Про нас</NLink>
         <NLink v-if="!isSignIn" to="/auth/sign-in" :class="{ white: isWhite }">Увійти</NLink>
         <NLink v-if="!isSignIn" to="/auth/sign-up" :class="{ white: isWhite }">Реєстрація</NLink>

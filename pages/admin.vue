@@ -58,10 +58,10 @@
       })
     },
     methods: {
-      changeState({ 
+      changeState() { 
         
       }
-    },
+    }
   }
 </script>
 

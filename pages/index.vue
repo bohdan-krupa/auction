@@ -5,25 +5,25 @@
     </section>
 
     <section class="auctions-container">
-      <h2>Поточні аукціони <br> {{secondsToTime(test)}}</h2>
+      <h2 @click="addAuction()">Поточні аукціони</h2>
 
       <div class="auctions">
         <div v-for="(auction, index) in auctions" :key="index" class="item">
-          <NLink :to="`/auction/${index.replace('-', '')}`">
+          <NLink :to="`/auction/${auction.id.replace('-', '')}`">
             <p class="title">{{auction.title}}</p>
             <img src="item/bmw.png" alt="item" />
             <p v-if="auction.startTime > 0" class="starts-in">Початок через:</p>
             <div v-else>
               <p class="buyer">{{auction.buyer}}</p>
-              <p class="timer">00:00:{{auction.currentSecond}}</p>
+              <p class="timer">00:00:0{{msToSeconds(auction.currentTime)}}</p>
               <p class="price">{{auction.currentPrice}} грн</p>
             </div>
           </NLink>
 
           <div v-if="auction.startTime > 0" class="btn no-btn">
-            {{secondsToTime(auction.startTime).h}}год {{secondsToTime(auction.startTime).m}}хв {{secondsToTime(auction.startTime).s}}с
+            {{msToTime(auction.startTime).h}}год {{msToTime(auction.startTime).m}}хв {{msToTime(auction.startTime).s}}с
           </div>
-          <div v-else class="btn" @click="makeBid(index)">Підвищити ставку</div>
+          <div v-else class="btn" @click="makeBid(auction.id)">Підвищити ставку</div>
         </div>
       </div>
     </section>
@@ -37,19 +37,37 @@
   export default {
     data() {
       return {
-        auctions: null,
-        test: null
+        auctions: [],
+        interval: null
       }
     },
     mounted() {
-      firebase.database().ref('/test').on('value', snap => {
-        this.test = snap.val()
-      })
-
       firebase.database().ref('/auctions').on('value', snap => {
-        this.auctions = snap.val()
+        const auctions = snap.val()
+
+        clearInterval(this.interval)
+        this.interval = setInterval(() => {
+          this.auctions = []
+
+          for (let key in auctions) {
+            const auction = auctions[key]
+  
+            this.auctions.push({
+              id: key,
+              title: auction.title,
+              desc: auction.desc,
+              price: auction.price,
+              currentPrice: auction.currentPrice,
+              images: auction.images,
+              startTime: new Date(auction.startTime) - new Date(),
+              currentTime: new Date(auction.currentTime) - new Date() > 0 ? new Date(auction.currentTime) - new Date() : 0,
+              buyer: auction.buyer
+            })
+          }
+        }, 1000)
       })
-    }, methods: {
+    },
+    methods: {
       makeBid: async (auctionId) => {
         const token = await firebase.auth().currentUser.getIdToken(true)
 
@@ -57,24 +75,39 @@
           headers: {
             'Authorization': `Bearer ${token}`
           }
+        }).then(res => {
+          console.log(res.data)
         })
       },
-      secondsToTime(secs) {
-        secs = Math.round(secs)
-        const hours = Math.floor(secs / (60 * 60))
+      addAuction() {
+        const time = new Date()
+        time.setSeconds(time.getSeconds() + 60)
 
-        const divisorForMinutes = secs % (60 * 60)
-        const minutes = Math.floor(divisorForMinutes / 60)
+        const startTime = time.toJSON()
+        const currentTime = new Date(time.setSeconds(time.getSeconds() + 10)).toJSON()
 
-        const divisorForSeconds = divisorForMinutes % 60
-        const seconds = Math.ceil(divisorForSeconds)
+        axios.post(`${process.env.BASE_API}/admin/auction`, {
+          title: 'Mustang 2020',
+          desc: 'Some useful',
+          currentPrice: 300000,
+          price: 600000,
+          startTime,
+          currentTime,
+          buyer: 'nobody',
+          images: ['base64', 'base64']
+        })
+      },
+      msToTime(ms) {
+        let s = Math.floor(ms / 1000)
+        let m = Math.floor(s / 60)
+        s = s % 60
+        let h = Math.floor(m / 60)
+        m = m % 60
 
-        const obj = {
-          h: hours,
-          m: minutes,
-          s: seconds
-        }
-        return obj
+        return { s, m, h }
+      },
+      msToSeconds(ms) {
+        return Math.floor(ms / 1000)
       }
     }
   }
@@ -128,7 +161,7 @@
         align-items: center
         width: 240px
         height: 320px
-        margin: 15px
+        margin: 30px
         background: #DDD
         border-radius: 30px
         box-shadow: 0 0 20px #555

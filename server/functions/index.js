@@ -7,7 +7,6 @@ const app = express()
 app.use(cors({ origin: true }))
 
 const runtimeOpts = {
-  timeoutSeconds: 300,
   memory: '2GB'
 }
 
@@ -24,9 +23,14 @@ app.get('/make-bid', async (req, res) => {
 
     const decodedToken = await admin.auth().verifyIdToken(tokenId)
 
+    let currentTime = new Date()
+    currentTime = new Date(currentTime.setSeconds(currentTime.getSeconds() + 10)).toJSON()
+
+    const currentPrice = await (await admin.database().ref(`/auctions/${auctionId}/currentPrice`).once('value')).val()
     await admin.database().ref(`/auctions/${auctionId}`).update({
-      currentSecond: 10,
-      buyer: decodedToken.email
+      currentTime,
+      currentPrice: currentPrice + 100,
+      buyer: decodedToken.email.split('@')[0]
     })
 
     res.send(true)
@@ -34,29 +38,6 @@ app.get('/make-bid', async (req, res) => {
     res.status(500).send(err)
   }
 })
-
-// let start = 0
-
-setInterval(async () => {
-  // admin.database().ref(`/test`).set(++start)
-
-  const auctions = (await admin.database().ref(`/auctions`).once('value')).val()
-
-  for (auction in auctions) {
-    if (auctions[auction].startTime > 0) {
-      admin.database().ref(`/auctions/${auction}/startTime`).set(auctions[auction].startTime - 1)
-    } else {
-      let currentSecond = auctions[auction].currentSecond - 1
-      currentSecond = currentSecond > 0 ? currentSecond : 0
-
-      admin.database().ref(`/auctions/${auction}`).update({
-        startTime: 0,
-        currentSecond
-      })
-    }
-  }
-}, 1000)
-
 
 // Get all auctions
 app.get('/auctions', (req, res) => {
@@ -89,16 +70,7 @@ app.get('/auction', (req, res) => {
 // Add auction
 app.post('/admin/auction', async (req, res) => {
   try {
-    const { title, desc, currentPrice, price, startTime, images } = req.body
-
-    await admin.database().ref('/auctions').push({
-      title,
-      desc,
-      currentPrice,
-      price,
-      startTime,
-      images
-    })
+    await admin.database().ref('/auctions').push(req.body)
 
     res.send(true)
   } catch (err) {

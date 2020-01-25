@@ -55,7 +55,6 @@ export default {
   mounted() {
     axios.get(`${process.env.BASE_API}/auction?id=${this.$route.params.id}`)
     .then(res => {
-      console.log(res)
       this.auction = res.data
       this.isStarted = res.data.startTime <= 0
     })

@@ -130,7 +130,7 @@
       text-transform: none
 
   .profile
-    width: 800px
+    width: 850px
     margin: 0 auto
 
     .profile-top
@@ -156,7 +156,7 @@
       display: flex
       flex-flow: wrap
       justify-content: space-between
-      margin: 30px -15px
+      margin: 30px -30px
       
       .item
         display: flex
@@ -164,7 +164,7 @@
         align-items: center
         width: 240px
         height: 280px
-        margin: 15px
+        margin: 30px
         text-align: center
         background: #DDD
         border-radius: 30px
