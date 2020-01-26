@@ -64,7 +64,7 @@
     display: flex
     justify-content: center
     align-items: center
-    background-image: url(/img/bg.jpg)
+    background-image: url(~assets/img/bg.jpg)
     background-position: center
     height: 100vh
     background-size: cover
