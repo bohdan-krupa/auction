@@ -24,7 +24,7 @@ app.get('/make-bid', async (req, res) => {
     const decodedToken = await admin.auth().verifyIdToken(tokenId)
 
     let currentTime = new Date()
-    currentTime = new Date(currentTime.setSeconds(currentTime.getSeconds() + 10)).toJSON()
+    currentTime = new Date(currentTime.setSeconds(currentTime.getSeconds() + 11)).toJSON()
 
     const currentPrice = await (await admin.database().ref(`/auctions/${auctionId}/currentPrice`).once('value')).val()
     await admin.database().ref(`/auctions/${auctionId}`).update({
