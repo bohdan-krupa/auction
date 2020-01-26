@@ -19,27 +19,21 @@ module.exports = {
 			{ property: 'og:title', content: 'Some title' }
 		],
 		link: [
-			{ rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-			{ rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-			{ rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-			{ rel: 'manifest', href: '/site.webmanifest' },
+			{ rel: 'apple-touch-icon', sizes: '180x180', href: 'apple-touch-icon.png' },
+			{ rel: 'icon', type: 'image/png', sizes: '32x32', href: 'favicon-32x32.png' },
+			{ rel: 'icon', type: 'image/png', sizes: '16x16', href: 'favicon-16x16.png' },
+			{ rel: 'manifest', href: 'site.webmanifest' },
 
-			{ rel: 'stylesheet', href: '/src/toastify.css' }
+			{ rel: 'stylesheet', href: 'src/toastify.css' }
 		],
-		script: [ { src: '/src/toastify.js' } ]
+		script: [ { src: 'src/toastify.js' } ]
 	},
 	router: {
-    base: '/'
-		// base: '/aucfine-alpha/'
+    // base: '/'
+		base: '/aucfine-alpha/'
 	},
 	loading: { color: '#fff' },
 	plugins: [ '~/plugins/firebase.js' ],
-	modules: [
-		// '@nuxtjs/axios',
-	],
-
-	// axios: {
-	// },
 
 	build: {
 		extend(config, ctx) {}
