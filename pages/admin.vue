@@ -4,18 +4,47 @@
     <div class="container">
 
       <div class="navigation">
-        <nuxt-link to="/admin"  @click="changeState"> Аукціони</nuxt-link>
-        <nuxt-link to="/admin" v-bind="isUsers"> Користувачі</nuxt-link>
+        <nuxt-link to="" @click.native="auction"> Аукціони</nuxt-link>
+        <nuxt-link to="" @click.native="users"> Користувачі</nuxt-link>
       </div>
 
-      <span> Додати аукціони </span>
+      <span  v-if="!isUsers"> Додати аукціони </span>
       
-      <div class="container-info" v-bind="isUsers" >
+      <div class="container-info" v-if="!isUsers">
         <label>Імя товару: </label>
         <input type="text">
         <label>Початок: </label>
         <input type="text">
       </div>
+
+      <span  v-if="!isUsers">Опис</span>
+
+      <div class="container-desc" v-if="!isUsers">
+        <textarea placeholder="Опис продукта"></textarea>
+        <div class="price">
+          <img src="img/coin.svg" alt="Price">
+          <input type="text" placeholder="Price">
+          <select>
+            <option value="$">$</option>
+            <option value="€">€</option>
+            <option value="₴">₴</option>
+          </select>
+
+        </div>
+        <div class="time" v-if="!isUsers">
+          <img src="img/money.svg" alt="Price" >
+          <input type="time" placeholder="Time" min="9:00" max="00:00">
+        </div>
+
+      </div>
+
+      <div class="container-users" v-if="isUsers">
+        <li>Htlfasdasdasd</li>
+        <li>dasdasd</li>
+        <li>sadadasd</li>
+      </div>
+      
+      <div class="btn">Готово</div>
 
 
 
@@ -32,7 +61,7 @@
   export default {
     data() {
       return {
-        isUsers: true,
+        isUsers: false,
       };
     },
     mounted() {
@@ -58,8 +87,13 @@
       })
     },
     methods: {
+      auction(){
+        this.isUsers = false
+      },
+      users(){
+        this.isUsers = true
+      },
       changeShow() { 
-        // Auctiony i korystuvachi ne mayut buty v grey container
       }
     }
   }
@@ -67,6 +101,8 @@
 
 <style lang="sass" scoped>
   @import '~/assets/variables.sass'
+  @import '~/assets/input.sass'
+  @import '~/assets/btn.sass'
   h1
     text-align: center
     font-family: 'Alata', sans-serif
@@ -123,13 +159,60 @@
           -ms-transition: all 0.30s ease-in-out
           -o-transition: all 0.30s ease-in-out
           outline: none
+    
+    .container-desc 
+      display: flex
+      flex-flow: column wrap
 
+      .price
+        display: flex
+        align-items: center
+        justify-content: center
+
+        select
+          width: 40px
+          height: 15px
+          outline: none 
+          margin-left: 10px
+  
+
+        select > option
+          background-color: #999 
+
+        input
+          width: 100px
+          height: 20px
+      
+      img
+        width: 30px
+        margin: 10px
+      
+      textarea
+        width: 350px
+        height: 250px
+        border-radius: 10px
+        border: 1px solid $main-background
+        outline: none
+        resize: none
+        padding: 10px
+        font-size: 15px
+        font-weight: bold
+        margin-left: auto
+        margin-right: auto
+      
+      .time
+        display: flex
+        flex: flow-wrap
+        justify-content: center
+        align-items: center
+
+        input
+          width: 100px
+          height: 20px
+          padding: 2px
+          border-radius: 3px
+          margin-right: 50px
           
 
-      
-    
 
-      
-      
-  
 </style>
