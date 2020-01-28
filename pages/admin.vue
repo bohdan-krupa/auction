@@ -39,11 +39,11 @@
       </div>
 
       <div class="container-users" v-if="isUsers">
-        <li>Htlfasdasdasd</li>
-        <li>dasdasd</li>
-        <li>sadadasd</li>
+        <li>Users-1</li>
+        <li>Users-2</li>
+        <li>Users-3</li>
       </div>
-      
+
       <div class="btn">Готово</div>
 
 

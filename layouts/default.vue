@@ -38,6 +38,7 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
+  list-style: none;
 }
 
 a {
