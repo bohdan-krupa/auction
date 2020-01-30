@@ -1,19 +1,17 @@
 <template>
   <div>
     <h1>Адмінка</h1>
-    <div class="container">
-
       <div class="navigation">
         <nuxt-link to="" @click.native="auction"> Аукціони</nuxt-link>
         <nuxt-link to="" @click.native="users"> Користувачі</nuxt-link>
       </div>
 
+    <div class="container">
+
       <span  v-if="!isUsers"> Додати аукціони </span>
       
       <div class="container-info" v-if="!isUsers">
         <label>Імя товару: </label>
-        <input type="text">
-        <label>Початок: </label>
         <input type="text">
       </div>
 
@@ -24,16 +22,13 @@
         <div class="price">
           <img src="img/coin.svg" alt="Price">
           <input type="text" placeholder="Price">
-          <select>
-            <option value="$">$</option>
-            <option value="€">€</option>
-            <option value="₴">₴</option>
-          </select>
+
 
         </div>
         <div class="time" v-if="!isUsers">
           <img src="img/money.svg" alt="Price" >
           <input type="time" placeholder="Time" min="9:00" max="00:00">
+          <input type="file" value="Добавте фото" @click="fileSelected">
         </div>
 
       </div>
@@ -94,6 +89,10 @@
         this.isUsers = true
       },
       changeShow() { 
+      },
+      fileSelected(event){
+        console.log(event)
+
       }
     }
   }
@@ -103,6 +102,21 @@
   @import '~/assets/variables.sass'
   @import '~/assets/input.sass'
   @import '~/assets/btn.sass'
+  .navigation
+    display: flex
+    justify-content: center
+    margin: 50px
+    a
+      margin-right: 130px
+      margin-left: 130px
+      font-size: 25px
+      
+      &:hover
+        border-bottom: 2px #777 solid
+        padding: 0px
+        color: #777
+
+    
   h1
     text-align: center
     font-family: 'Alata', sans-serif
@@ -120,21 +134,10 @@
     margin-left: auto
     margin-right: auto
     text-align: center
+    padding-bottom: 50px
 
     span
       font-size: 20px
-
-    .navigation
-      display: flex
-      justify-content: space-between
-      padding: 20px
-
-      a
-        text-decoration: none
-        font-family: 'Alata', sans-serif
-        color: $text-color
-        font-size: 20px
-        font-weight: bold
     
     .container-info
       display: flex
