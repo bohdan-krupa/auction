@@ -7,39 +7,30 @@
       </div>
 
     <div class="container">
-
-      <span  v-if="!isUsers"> Додати аукціони </span>
-      
-      <div class="container-info" v-if="!isUsers">
-        <label>Імя товару: </label>
-        <input type="text">
+      <span>Мої аукціони</span>
+      <div class="auction">
+        <div class="info">
+          <span>№</span>
+          <span>Назва</span>
+          <span>Ціна</span>
+          <span>Стан</span>
+        </div>
+      <div class="item">
+        <p>1</p>
+        <span>Bmw X6</span>
+        <span>2000$</span>
+        <span>Діючий</span>
+        <img src="item/pen.svg" alt="">
       </div>
 
-      <span  v-if="!isUsers">Опис</span>
-
-      <div class="container-desc" v-if="!isUsers">
-        <textarea placeholder="Опис продукта"></textarea>
-        <div class="price">
-          <img src="img/coin.svg" alt="Price">
-          <input type="text" placeholder="Price">
-
-
-        </div>
-        <div class="time" v-if="!isUsers">
-          <img src="img/money.svg" alt="Price" >
-          <input type="datetime" placeholder="Time" min="9:00" max="00:00">
-          <input type="file" value="Добавте фото" @click="fileSelected">
-        </div>
-
       </div>
-
       <div class="container-users" v-if="isUsers">
         <li>Users-1</li>
         <li>Users-2</li>
         <li>Users-3</li>
       </div>
 
-      <div class="btn">Готово</div>
+      <div class="btn" @click="addAuction">Додати аукціон</div>
 
 
 
@@ -88,7 +79,8 @@
       users(){
         this.isUsers = true
       },
-      changeShow() { 
+      addAuction() { 
+        this.$router.push('/AuctionAdd')
       },
       fileSelected(event){
         console.log(event)
@@ -136,85 +128,17 @@
     text-align: center
     padding-bottom: 50px
 
-    span
-      font-size: 20px
+    .info
+      span
+        margin-right: 65px
     
-    .container-info
+    .item
       display: flex
-      flex-flow: wrap column
-      align-items: flex-start
+      justify-content: space-around
       margin-left: 50px
-      
-      input
-        margin-bottom: 10px
-        outline: none
-        height: 20px
-        width: 200px
-        border-radius: 10px
-        border: 1px solid $main-background
-        padding: 8px
 
-        &:focus
-          box-shadow: 0 0 5px #888
-          border: 1px solid #DDD
-          -webkit-transition: all 0.30s ease-in-out
-          -moz-transition: all 0.30s ease-in-out
-          -ms-transition: all 0.30s ease-in-out
-          -o-transition: all 0.30s ease-in-out
-          outline: none
-    
-    .container-desc 
-      display: flex
-      flex-flow: column wrap
-
-      .price
-        display: flex
-        align-items: center
-        justify-content: center
-
-        select
-          width: 40px
-          height: 15px
-          outline: none 
-          margin-left: 10px
-  
-
-        select > option
-          background-color: #999 
-
-        input
-          width: 100px
-          height: 20px
-      
       img
-        width: 30px
-        margin: 10px
-      
-      textarea
-        width: 350px
-        height: 250px
-        border-radius: 10px
-        border: 1px solid $main-background
-        outline: none
-        resize: none
-        padding: 10px
-        font-size: 15px
-        font-weight: bold
-        margin-left: auto
-        margin-right: auto
-      
-      .time
-        display: flex
-        flex: flow-wrap
-        justify-content: center
-        align-items: center
-
-        input
-          width: 100px
-          height: 20px
-          padding: 2px
-          border-radius: 3px
-          margin-right: 50px
+        width: 20px
           
 
 
