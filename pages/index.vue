@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="top">
-      <h1>Don't fuck yourself</h1>
+      <h1>Виграйте свою мрію</h1>
     </section>
 
     <section class="auctions-container">

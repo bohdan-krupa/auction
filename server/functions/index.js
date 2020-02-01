@@ -6,9 +6,9 @@ const admin = require('firebase-admin')
 const app = express()
 app.use(cors({ origin: true }))
 
-const runtimeOpts = {
-  memory: '2GB'
-}
+// const runtimeOpts = {
+//   memory: '2GB'
+// }
 
 const serviceAccount = require('./serviceAccountKey.json')
 admin.initializeApp({
@@ -24,7 +24,7 @@ app.get('/make-bid', async (req, res) => {
     const decodedToken = await admin.auth().verifyIdToken(tokenId)
 
     let currentTime = new Date()
-    currentTime = new Date(currentTime.setSeconds(currentTime.getSeconds() + 11)).toJSON()
+    currentTime = new Date(currentTime.setSeconds(currentTime.getSeconds() + 10)).toJSON()
 
     const currentPrice = await (await admin.database().ref(`/auctions/${auctionId}/currentPrice`).once('value')).val()
     await admin.database().ref(`/auctions/${auctionId}`).update({
@@ -34,34 +34,6 @@ app.get('/make-bid', async (req, res) => {
     })
 
     res.send(true)
-  } catch (err) {
-    res.status(500).send(err)
-  }
-})
-
-// Get all auctions
-app.get('/auctions', (req, res) => {
-  try {
-    admin.database().ref('/auctions').once('value', snap => {
-      res.send(snap.val())
-    })
-  } catch (err) {
-    res.status(500).send(err)
-  }
-})
-
-// Get auction by id
-app.get('/auction', (req, res) => {
-  try {
-    const id = req.query.id
-    admin.database().ref(`/auctions/-${id}`).once('value', snap => {
-      const auction = snap.val()
-      if (auction) {
-        res.send(snap.val())
-      } else {
-        res.status(404).send('Аукціон не знайдено')
-      }
-    })
   } catch (err) {
     res.status(500).send(err)
   }
@@ -81,9 +53,15 @@ app.post('/admin/auction', async (req, res) => {
 // Delete auction
 app.delete('/admin/auction', async (req, res) => {
   try {
-    await admin.database().ref(`/auctions/-${req.query.id}`).remove()
+    const tokenId = req.get('Authorization').split('Bearer ')[1]
+    const decodedToken = await admin.auth().verifyIdToken(tokenId)
 
-    res.send(true)
+    if (decodedToken.email == 'bodya.save.dev@gmail.com') {
+      await admin.database().ref(`/auctions/${req.query.id}`).remove()
+      res.send(true)
+    } else {
+      res.status(401).send('Ви не адмін')
+    }
   } catch (err) {
     res.status(500).send(err)
   }
@@ -124,4 +102,6 @@ app.get('/admin/isAdmin', async (req, res) => {
   }
 })
 
-exports.api = functions.runWith(runtimeOpts).https.onRequest(app)
+exports.api = functions.https.onRequest(app)
+
+// functions.runWith(runtimeOpts)
