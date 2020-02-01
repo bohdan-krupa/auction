@@ -38,7 +38,7 @@
 
       setInterval(() => {
         this.updateTime()
-      }, 1000)
+      }, 100)
     },
     methods: {
       makeBid: async (auctionId) => {
@@ -71,7 +71,7 @@
       },
       msToSeconds(ms) {
         return Math.floor(ms / 1000)
-      }
+      },
     }
   }
 </script>

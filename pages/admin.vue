@@ -27,7 +27,7 @@
         </div>
         <div class="time" v-if="!isUsers">
           <img src="img/money.svg" alt="Price" >
-          <input type="time" placeholder="Time" min="9:00" max="00:00">
+          <input type="datetime" placeholder="Time" min="9:00" max="00:00">
           <input type="file" value="Добавте фото" @click="fileSelected">
         </div>
 
