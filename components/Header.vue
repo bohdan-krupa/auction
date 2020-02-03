@@ -3,7 +3,6 @@
     <nav>
       <div class="mask">
         <NLink to="/" class="logo">
-          <img src="img/logo.png" alt="Logo" />
           <h1 :class="{ white: isWhite }">AucFine</h1>
         </NLink>
       </div>

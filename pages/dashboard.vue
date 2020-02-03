@@ -5,9 +5,9 @@
     <div class="profile">
       <div class="profile-top">
         <div class="info-path">
-          <p class="data-item">Email: jerrylite219@gmail.com</p>
+          <p class="data-item">Email: {{email}}</p>
           <p class="data-item">Дата реєстрації: {{createDate}}</p>
-          <p class="data-item">Баланс: 300 грн</p>
+          <p class="data-item">Баланс: {{balance}} грн</p>
           <div class="data-item btn">Поповнити баланс</div>
           <div class="data-item btn">Змінити пароль</div>
         </div>
@@ -86,7 +86,9 @@
   export default {
     data() {
       return {
-        createDate: null
+        email: null,
+        createDate: null,
+        balance: 0
       }
     },
     methods: {
@@ -102,6 +104,7 @@
         if (user) {
           const datetime = new Date(user.metadata.creationTime)
           this.createDate = moment(datetime).format('YYYY.MM.DD')
+          this.email = user.email
         } else {
           this.$router.replace('/auth/sign-in')
         }
@@ -148,6 +151,7 @@
         height: 250px
         object-fit: cover
         border-radius: 100%
+        cursor: pointer
 
   .goods-container
     margin-top: 60px
