@@ -8,7 +8,7 @@
           <p class="data-item">Email: {{email}}</p>
           <p class="data-item">Дата реєстрації: {{createDate}}</p>
           <p class="data-item">Баланс: {{balance}} грн</p>
-          <div class="data-item btn">Поповнити баланс</div>
+          <div @click="addMoney()" class="data-item btn">Поповнити баланс</div>
           <div class="data-item btn">Змінити пароль</div>
         </div>
 
@@ -16,7 +16,7 @@
       </div>
 
       <div class="goods-container">
-        <h3 @click="speed()" class="title">Мої товари</h3>
+        <h3 class="title">Мої товари</h3>
 
         <div class="goods">
           <div class="item">
@@ -92,11 +92,8 @@
       }
     },
     methods: {
-      speed() {
-        console.log('ass')
-        axios.get(`${process.env.BASE_API}/change`).then(res => {
-          console.log(res.data)
-        })
+      addMoney() {
+        window.location.href = 'https://www.liqpay.ua/uk/authorization'
       }
     },
     mounted() {
