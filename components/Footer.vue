@@ -1,61 +1,34 @@
 <template>
   <footer>
-    <div class="contact">
-      <div class="contact-overlay">
-        <img src="img/contact.svg" alt="Contact">
-        <span> +380982911333</span>  
-      </div>
-      <div class="mail-overlay">
-        <img src="img/mail.svg" alt="Email">
-        <span>droshiping.happy@gmail.com</span>
-      </div>
+      <a href="mailto:team-a@gmail.com">team-a@gmail.com</a>
 
-    </div>
-    <div class="copyright">
-      <span>© AucFine 2020</span>
-    </div>
+      <div class="copyright">© AucFine 2019 - {{year}}</div>
   </footer>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        year: new Date().getFullYear()
+      }
+    }
+  }
+</script>
 
 <style lang="sass" scoped>
   footer
     width: 100%
-    height: 15  0px
     margin-top: 80px
-    background-color:  #555
+    text-align: center
+    line-height: 25px
+    margin: 80px 0 30px 0
     
-    img
-      width: 25px
-      margin-right: 15px
+    a
+      color: #333
+      font-size: 18px
 
-    h3
-      text-align: center
-      line-height: 150px
-      color: #999
-      font-size: 50px
-      letter-spacing: 20px
-    
-    .contact
-      padding-top: 50px
-      display: flex
-      flex-flow: wrap column
-      align-items: center
-      
-      .contact-overlay
-        display: flex
-        justify-content: center
-        align-items: center
-      span
-        font-size: 20px 
-        margin-bottom: 10px
-
-      .mail-overlay
-        display: flex
-        align-items: center
-        justify-content: center
-    
     .copyright
-      display: flex
-      justify-content: center
-      font-size: 20px      
+      color: #555
+      font-size: 19px
 </style>
