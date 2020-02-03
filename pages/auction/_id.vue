@@ -3,21 +3,23 @@
     <div class="info">
       <h1>{{auction.title}}</h1>
       <div v-if="isStarted" class="current-data">
-        <div class="timer">00:00:10</div>
-        <div class="buyer">mr.Robot</div>
+        <div class="timer">00:00:{{currentTime}}</div>
+        <div class="buyer">{{auction.buyer}}</div>
       </div>
       <p
         class="desc"
       >{{auction.desc}}</p>
       <div v-if="!isStarted" class="starts-in-container">
         <p class="starts-in">Початок через:</p>
-        <div class="btn no-btn">7год 14хв 20с</div>
+        <div class="btn no-btn">
+          {{msToTime(startTime).h}}год {{msToTime(startTime).m}}хв {{msToTime(startTime).s}}с
+        </div>
       </div>
       <div v-if="isStarted" class="price-container">
-        <p class="price">Ціна: 100 грн</p>
+        <p class="price">Ціна: {{auction.currentPrice}} грн</p>
         <div class="btn">Підняти ставку</div>
       </div>
-      <div class="btn buy-it-now">Купити зараз за 34000 грн</div>
+      <div class="btn buy-it-now">Купити зараз за {{auction.price}} грн</div>
     </div>
 
     <div class="views">
@@ -25,9 +27,9 @@
 
       <div class="other-img">
         <img
-          v-for="(photo, index) in otherPhotos"
+          v-for="(photo, index) in auction.images"
           :key="index"
-          :src="photo"
+          :src="`data:image/png;base64,${photo}`"
           alt="Auction photo"
           @click="changePhoto(photo)"
         />
@@ -44,20 +46,59 @@
     data() {
       return {
         isStarted: true,
-        mainPhoto: "img/mac-1.png",
-        otherPhotos: ["img/mac-2.png", "img/mac-1.png", "img/mac-3.png"],
-        auction: {}
+        mainPhoto: null,
+        auction: {},
+        currentTime: null,
+        startTime: null
       }
     },
     methods: {
       changePhoto(photo) {
-        this.mainPhoto = photo
+        this.mainPhoto = `data:image/png;base64,${photo}`
       },
+      makeBid: async (auctionId) => {
+        const token = await firebase.auth().currentUser.getIdToken(true)
+
+        axios.get(`${process.env.BASE_API}/make-bid?id=${auctionId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }).then(res => {
+          console.log(res.data)
+        })
+      },
+      updateTime() {
+        this.startTime = new Date(this.auction.startTime) - new Date()
+
+        this.currentTime = this.msToSeconds(
+          new Date(this.auction.currentTime) - new Date() > 0 ? new Date(this.auction.currentTime) - new Date() : 0
+        )
+        this.currentTime = this.currentTime < 10 ? '0' + this.currentTime : this.currentTime
+      },
+      msToTime(ms) {
+        let s = Math.floor(ms / 1000)
+        let m = Math.floor(s / 60)
+        s = s % 60
+        let h = Math.floor(m / 60)
+        m = m % 60
+
+        return { s, m, h }
+      },
+      msToSeconds(ms) {
+        return Math.floor(ms / 1000)
+      }
     },
     mounted() {
       firebase.database().ref(`/auctions/-${this.$route.params.id}`).on('value', snap => {
         this.auction = snap.val()
-        this.isStarted = snap.val().startTime <= 0
+        this.changePhoto(this.auction.images[0])
+        this.isStarted = this.auction.startTime <= 0
+
+        this.updateTime()
+
+        setInterval(() => {
+          this.updateTime()
+        }, 1000)
       })
     }
   }
@@ -134,7 +175,7 @@
     .main-img
       height: 400px
       width: 400px
-      object-fit: cover
+      object-fit: contain
 
     .other-img
       display: flex
@@ -146,6 +187,6 @@
         margin: 15px
         border: 1px solid #999
         padding: 8px
-        object-fit: cover 
+        object-fit: contain
         cursor: pointer
 </style>
