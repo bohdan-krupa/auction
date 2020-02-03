@@ -2,16 +2,13 @@
   <div>
     <h1>Адмінка</h1>
     <div class="navigation">
-      <div class="subtitle" @click="switchShow('auctions-list')">Аукціони</div>
-      <div class="subtitle" @click="switchShow('users-list')">Користувачі</div>
+      <!-- <div class="subtitle" @click="switchShow('auctions-list')">Аукціони</div> -->
+      <!-- <div class="subtitle" @click="switchShow('users-list')">Користувачі</div> -->
     </div>
 
     <AuctionsList @addAuction="switchShow('add-auction')" v-if="showMode == 'auctions-list'" />
 
     <AddAuction v-if="showMode == 'add-auction'" />
-
-
-    <!-- <div class="btn">Готово</div> -->
   </div>
 </template>
 

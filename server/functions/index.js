@@ -6,16 +6,14 @@ const admin = require('firebase-admin')
 const app = express()
 app.use(cors({ origin: true }))
 
-// const runtimeOpts = {
-//   memory: '2GB'
-// }
-
 const serviceAccount = require('./serviceAccountKey.json')
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://aucfine.firebaseio.com'
 })
 
+
+// Make a bid
 app.get('/make-bid', async (req, res) => {
   try {
     const tokenId = req.get('Authorization').split('Bearer ')[1]
@@ -42,9 +40,16 @@ app.get('/make-bid', async (req, res) => {
 // Add auction
 app.post('/admin/auction', async (req, res) => {
   try {
-    await admin.database().ref('/auctions').push(req.body)
+    const tokenId = req.get('Authorization').split('Bearer ')[1]
+    const decodedToken = await admin.auth().verifyIdToken(tokenId)
 
-    res.send(true)
+    if (decodedToken.email == 'bodya.save.dev@gmail.com') {
+      await admin.database().ref('/auctions').push(req.body)
+
+      res.send(true)
+    } else {
+      res.status(401).send('Ви не адмін')
+    }
   } catch (err) {
     res.status(500).send(err)
   }
@@ -58,6 +63,7 @@ app.delete('/admin/auction', async (req, res) => {
 
     if (decodedToken.email == 'bodya.save.dev@gmail.com') {
       await admin.database().ref(`/auctions/${req.query.id}`).remove()
+
       res.send(true)
     } else {
       res.status(401).send('Ви не адмін')
@@ -103,5 +109,3 @@ app.get('/admin/isAdmin', async (req, res) => {
 })
 
 exports.api = functions.https.onRequest(app)
-
-// functions.runWith(runtimeOpts)

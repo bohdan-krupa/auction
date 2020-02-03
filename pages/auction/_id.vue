@@ -37,117 +37,115 @@
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  data() {
-    return {
-      isStarted: true,
-      mainPhoto: "img/mac-1.png",
-      otherPhotos: ["img/mac-2.png", "img/mac-1.png", "img/mac-3.png"],
-      auction: {}
-    };
-  },
-  methods: {
-    changePhoto(photo) {
-      this.mainPhoto = photo;
+  import firebase from 'firebase'
+  import axios from 'axios'
+
+  export default {
+    data() {
+      return {
+        isStarted: true,
+        mainPhoto: "img/mac-1.png",
+        otherPhotos: ["img/mac-2.png", "img/mac-1.png", "img/mac-3.png"],
+        auction: {}
+      }
     },
-  },
-  mounted() {
-    axios.get(`${process.env.BASE_API}/auction?id=${this.$route.params.id}`)
-    .then(res => {
-      this.auction = res.data
-      this.isStarted = res.data.startTime <= 0
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    methods: {
+      changePhoto(photo) {
+        this.mainPhoto = photo
+      },
+    },
+    mounted() {
+      firebase.database().ref(`/auctions/-${this.$route.params.id}`).on('value', snap => {
+        this.auction = snap.val()
+        this.isStarted = snap.val().startTime <= 0
+      })
+    }
   }
-};
 </script>
 
 <style lang="sass" scoped>
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap')
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap')
 
-.product
-  display: flex
-  justify-content: center
-  margin-top: 50px
-
-  .info
-    width: 500px
-    margin-right: 50px
-    
-    h1
-      font-size: 35px
-      font-family: 'Source Sans Pro', sans-serif
-      letter-spacing: 2px
-
-    .current-data
-      display: flex
-      justify-content: space-between
-      align-items: center
-
-      .timer
-        font-size: 30px
-        color: red
-        letter-spacing: 5px
-
-      .buyer
-        margin-left: 20px
-        font-size: 18px
-    
-    .desc
-      margin-top: 15px
-      font-size: 17px
-      color: #333
-
-    .starts-in-container, .price-container
-      display: flex
-      justify-content: space-between
-      align-items: center
-      width: 350px
-      margin: 50px 0
-
-    .price, .starts-in
-      font-size: 20px
-      font-weight: bold
-      color: #333
-      letter-spacing: 1px
-    
-    .btn
-      width: 180px
-      text-align: center
-      padding: 10px
-      background: #555
-      color: #FFF
-      border-radius: 10px
-      font-size: 18px
-      letter-spacing: 1px
-      user-select: none
-      cursor: pointer
-
-      &.no-btn
-        user-select: text
-        cursor: text
-
-      &.buy-it-now
-        width: 350px
-
-  .main-img
-    height: 400px
-    width: 400px
-    object-fit: cover
-
-  .other-img
+  .product
     display: flex
     justify-content: center
+    margin-top: 50px
 
-    img
-      width: 80px
-      height: 80px
-      margin: 15px
-      border: 1px solid #999
-      padding: 8px
-      object-fit: cover 
-      cursor: pointer
+    .info
+      width: 500px
+      margin-right: 50px
+      
+      h1
+        font-size: 35px
+        font-family: 'Source Sans Pro', sans-serif
+        letter-spacing: 2px
+
+      .current-data
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .timer
+          font-size: 30px
+          color: red
+          letter-spacing: 5px
+
+        .buyer
+          margin-left: 20px
+          font-size: 18px
+      
+      .desc
+        margin-top: 15px
+        font-size: 17px
+        color: #333
+
+      .starts-in-container, .price-container
+        display: flex
+        justify-content: space-between
+        align-items: center
+        width: 350px
+        margin: 50px 0
+
+      .price, .starts-in
+        font-size: 20px
+        font-weight: bold
+        color: #333
+        letter-spacing: 1px
+      
+      .btn
+        width: 180px
+        text-align: center
+        padding: 10px
+        background: #555
+        color: #FFF
+        border-radius: 10px
+        font-size: 18px
+        letter-spacing: 1px
+        user-select: none
+        cursor: pointer
+
+        &.no-btn
+          user-select: text
+          cursor: text
+
+        &.buy-it-now
+          width: 350px
+
+    .main-img
+      height: 400px
+      width: 400px
+      object-fit: cover
+
+    .other-img
+      display: flex
+      justify-content: center
+
+      img
+        width: 80px
+        height: 80px
+        margin: 15px
+        border: 1px solid #999
+        padding: 8px
+        object-fit: cover 
+        cursor: pointer
 </style>

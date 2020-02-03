@@ -2,7 +2,7 @@
   <div class="item">
     <NLink :to="`/auction/${id.replace('-', '')}`">
       <p class="title">{{auction.title}}</p>
-      <img src="item/bmw.png" alt="item" />
+      <img :src="`data:image/png;base64,${auction.images[0]}`" alt="item" />
       <p v-if="startTime > 0" class="starts-in">Початок через:</p>
       <div v-else>
         <p class="buyer">{{auction.buyer}}</p>
