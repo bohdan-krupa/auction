@@ -15,7 +15,7 @@
         <NLink v-if="isSignIn && !isAdmin" to="/dashboard" :class="{ white: isWhite }">Профіль</NLink>
         <NLink v-if="isAdmin" to="/admin" :class="{ white: isWhite }">Адмінка</NLink>
         <span v-if="isSignIn" @click="logout()" :class="{ white: isWhite }" class="logout">Вийти</span>
-        <span v-if="isSignIn && !isAdmin" :class="{ white: isWhite }">Баланс: 300 грн</span>
+        <span v-if="isSignIn && !isAdmin" :class="{ white: isWhite }">Баланс: 0 грн</span>
       </div>
     </nav>
   </header>

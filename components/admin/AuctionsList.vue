@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="btn">Додати аукціон</div>
+    <div @click="addAuction()" class="btn">Додати аукціон</div>
 
     <div class="list">
       <div class="row">
@@ -17,7 +17,7 @@
         <div class="col">{{auction.currentPrice}}</div>
         <div class="col">{{getStatus(auction.startTime, auction.currentTime)}}</div>
         <div class="col options">
-          <img src="img/edit.svg" alt="Edit">
+          <!-- <img src="img/edit.svg" alt="Edit"> -->
           <img @click="deleteAuction(index)" src="img/bin.svg" alt="Delete">
         </div>
       </div>
@@ -60,6 +60,9 @@
         }).then(res => {
           console.log(res.data)
         })
+      },
+      addAuction() {
+        this.$emit('addAuction')
       }
     }
   }
