@@ -68,7 +68,6 @@
 </script>
 
 <style lang="sass" scoped>
-  @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap")
   @import '~/assets/variables.sass'
 
   .white
@@ -80,7 +79,6 @@
     justify-content: space-between
     align-items: center
     height: 100px
-    font-family: 'Roboto'
     padding: 20px
     
     .logo

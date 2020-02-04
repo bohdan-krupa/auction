@@ -14,7 +14,8 @@
     <div v-if="startTime > 0" class="btn no-btn">
       {{msToTime(startTime).h}}год {{msToTime(startTime).m}}хв {{msToTime(startTime).s}}с
     </div>
-    <div v-else class="btn" @click="makeBid(id)">Підвищити ставку</div>
+    <div v-else-if="currentTime > 0" class="btn" @click="makeBid(id)">Підвищити ставку</div>
+    <div v-else class="btn no-btn">Продано</div>
   </div>
 </template>
 

@@ -27,7 +27,7 @@ app.get('/make-bid', async (req, res) => {
     const currentPrice = await (await admin.database().ref(`/auctions/${auctionId}/currentPrice`).once('value')).val()
     await admin.database().ref(`/auctions/${auctionId}`).update({
       currentTime,
-      currentPrice: currentPrice + 100,
+      currentPrice: parseInt(currentPrice) + 100,
       buyer: decodedToken.email.split('@')[0]
     })
 
@@ -76,15 +76,7 @@ app.delete('/admin/auction', async (req, res) => {
 // Update auction
 app.put('/admin/auction', async (req, res) => {
   try {
-    const { title, desc, startPrice, startTime, images } = req.body
-
-    await admin.database().ref(`/auctions/-${req.query.id}`).update({
-      title,
-      desc,
-      startPrice,
-      startTime,
-      images
-    })
+    await admin.database().ref(`/auctions/-${req.query.id}`).update(req.body)
 
     res.send(true)
   } catch (err) {

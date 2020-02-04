@@ -2,22 +2,23 @@
   <div class="product">
     <div class="info">
       <h1>{{auction.title}}</h1>
-      <div v-if="isStarted" class="current-data">
+      <div v-if="startTime <= 0" class="current-data">
         <div class="timer">00:00:{{currentTime}}</div>
         <div class="buyer">{{auction.buyer}}</div>
       </div>
       <p
         class="desc"
       >{{auction.desc}}</p>
-      <div v-if="!isStarted" class="starts-in-container">
+      <div v-if="startTime > 0" class="starts-in-container">
         <p class="starts-in">Початок через:</p>
         <div class="btn no-btn">
           {{msToTime(startTime).h}}год {{msToTime(startTime).m}}хв {{msToTime(startTime).s}}с
         </div>
       </div>
-      <div v-if="isStarted" class="price-container">
+      <div v-else class="price-container">
         <p class="price">Ціна: {{auction.currentPrice}} грн</p>
-        <div class="btn">Підняти ставку</div>
+        <div v-if="currentTime > 0" @click="makeBid(`-${$route.params.id}`)" class="btn">Підняти ставку</div>
+        <div v-else class="btn no-btn">Продано</div>
       </div>
       <div class="btn buy-it-now">Купити зараз за {{auction.price}} грн</div>
     </div>
@@ -45,7 +46,6 @@
   export default {
     data() {
       return {
-        isStarted: true,
         mainPhoto: null,
         auction: {},
         currentTime: null,
@@ -92,7 +92,6 @@
       firebase.database().ref(`/auctions/-${this.$route.params.id}`).on('value', snap => {
         this.auction = snap.val()
         this.changePhoto(this.auction.images[0])
-        this.isStarted = this.auction.startTime <= 0
 
         this.updateTime()
 
